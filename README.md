@@ -4,8 +4,11 @@ As part of the udacity.com Data Scientist nanodegree, this is project four and t
 ---
 ### Dog Breed Classification
 Our model will process dog images:
+
 <img src='images/sample_dog_output.png'/>
 
 And also human images and predict the closest dog breed:
+
 <img src='images/sample_human_2.png'/>
+
 ##### This image looks an Afghan Hound.
