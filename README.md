@@ -1,16 +1,12 @@
 # Capstone-Project4-Udacity-Data-Scientist
-As part of the udacity.com Data Scientist nanodegree, this is project four and the final project of the program, otherwise known as our Capstone Project. This project involves Convolutional Neural Networks, including a web application that allows the user to upload an image of a dog or a human showcasing an AI that will output the closest dog breed resemblance to the image.
+As part of the udacity.com Data Scientist nanodegree, this is project four and the final project of the program, otherwise known as our Capstone Project. This project involves building a stock price predictor that takes daily trading data over a certain date range as input, and outputs projected estimates for given query dates. The inputs will contain multiple metrics, such as opening price (Open), highest price the stock traded at (High), how many stocks were traded (Volume) and closing price adjusted for stock splits and dividends (Adjusted Close); we only need to predict the Adjusted Close price.
 
----
-### Dog Breed Classification
-Our model will process dog images:
+Investment firms, hedge funds, and even individuals or day traders have been using financial models to better understand market behavior and make profitable investments and trades. A wealth of information is available in the form of historical stock prices and company performance data, suitable for machine learning algorithms to process. According to an article by Mark Kolakowski ["How Robots Rule the Stock Market (SPX, DJIA)"](https://www.investopedia.com/news/how-robots-rule-stock-market-spx-djia):
 
-<img src='images/sample_dog_output.png'/>
+> only 10% of trading volume now comes from human discretionary investors, per data from JPMorgan Chase & Co. (JPM) cited by Bloomberg
 
-And also human images and predict the closest dog breed:
-
-<img src='https://s3-prod.adage.com/s3fs-public/styles/800x600/public/20210809_libertyMutual_3x2.jpg'/>
-Source: https://adage.com/article/hot-spots/watch-newest-commercials-directv-liberty-mutual-dodge-and-more/2356161
+![Crypto Trading Robot Image](https://insidebitcoins.com/wp-content/uploads/2020/05/automated_forex_robot-1200x900-1-768x576.jpg)
+##### Source: "Best Forex Robots 2021" by Kane Pepi at https://insidebitcoins.com/forex-robot
 
 ---
 ### Capstone Best Practices
@@ -18,9 +14,8 @@ I will be showcasing the following Data Science and Software Engineering Best Pr
 
 * Github and Code Quality including this repository along with comments, docstring in each function, class, or method, unit tests, and logical functions and PEP8 style guideline conventions
 * ETL or Extract Transform Load data setup of a clean dataset
-* Machine Learning including NLP techniques to process image data and the proper use of pipelines and grid search, traning vs. test data, and model evaluation
-* Deployment of our web application to the IBM Cloud Foundry showing our Dog Breed Classification model and allowing users to upload images and receive dog breed recommendations
-* Additional recommendation engine that recommends breeds based on Knowledge Based (qualities you are looking for in a dog) and Content Based (similarities to your features what other dog breeds resemble you, which will will hopefully introduce some serendipity or unexpected matches in our recommendations)
+* Machine Learning techniques to predict prices and the proper use of pipelines, traning vs. test data, and model evaluation
+* Deployment of our web application to the IBM Cloud Foundry showing our Stock Predictor and Stock Recommendation Engine models and allowing users to select Stocks and get predictions on adjusted closing prices over a given time period as well as suggestions on additional stocks based on the ones they have selected
 
 As in my previous project, I have also documented the work in the blog below:
 
