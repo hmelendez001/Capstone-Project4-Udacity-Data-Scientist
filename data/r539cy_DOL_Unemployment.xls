@@ -1,0 +1,949 @@
+<table width="640" border="0" summary="r539cy Report Table">
+	<tr><td id="noinfo" colspan="10" axis="No Information available"></td></tr>
+	<tr bgcolor='#d9d9d9'>
+		<td id="report_date" width="100" rowspan="2" align="center"></td>
+		<th id="initial_claims" width="275" colspan="4" align="center">Initial Claims</th>
+		<th id="continued_claims" width="275" colspan="4" align="center">Continued Claims</th>
+		<th id="iur" width='100' colspan='2' align='center' axis="Insured Unemployment Rate or I. U. R.which is pronounced as" >I.U.R</th>
+		<th id="cov_employment" width="200" rowspan="2" align="center">Covered Employment</th>
+	</tr>
+	<tr bgcolor='#d9d9d9'>
+		<th id="nsa_initial_claims" width="100" align="center" axis="Initial Claims for Not Seasonally Adjusted or">N.S.A</th>
+		<th id="sf_initial_claims" width="100" align="center" axis="Initial Claims for Seasonal Factor or">S.F.</th>
+		<th id="sa_initial_claims" width="100" align="center" axis="Initial Claims for Seasonal Adjusted or">S.A.</th>
+		<th id="sa_4_week_initial_claims" width="100" align="center" axis="Initial Claims for Seasonal Adjusted or">S.A. 4-Week</th>
+		<th id="nsa_continued_claims" width="100" align="center" axis="Continued Claims for Not Seasonally Adjusted or">N.S.A</th>
+		<th id="sf_continued_claims" width="100" align="center" axis="Continued Claims for Seasonal Factor or">S.F.</th>
+		<th id="sa_continued_claims" width="100" align="center" axis="Continued Claims for Seasonal Adjusted or">S.A.</th>
+		<th id="sa_4_week_continued_claims" width="100" align="center" axis="Continued Claims for Seasonal Adjusted or">S.A. 4-Week</th>
+		<th id="nsa_iur" width="100" align="center" axis="Insured Unemployment Rate for Not Seasonally Adjusted or">N.S.A</th>
+		<th id="sa_iur" width="100" align="center" axis="Insured Unemployment Rate for Seasonally Adjusted or">S.A.</th>
+	</tr>
+<tr>
+<th id="01/02/2021" align=left>01/02/2021</th>
+<td headers="01/02/2021 nsa_initial_claims" align=right>898,610</td>
+<td headers="01/02/2021 sf_initial_claims" align=right>118,083.0</td>
+<td headers="01/02/2021 sa_initial_claims" align=right>781,000</td>
+<td headers="01/02/2021 sa_4_week_initial_claims" align=right>805,000</td>
+<td headers="01/02/2021 nsa_continued_claims" align=right>5,756,886</td>
+<td headers="01/02/2021 sf_continued_claims" align=right>517,157.0</td>
+<td headers="01/02/2021 sa_continued_claims" align=right>5,240,000</td>
+<td headers="01/02/2021 sa_4_week_continued_claims" align=right>5,291,000</td>
+<td headers="01/02/2021 nsa_iur" align=center>4.1</td>
+<td headers="01/02/2021 sa_iur" align=center>3.7</td>
+<td headers="01/02/2021 cov_employment" align=center>142,133,208</td>
+</tr>
+<tr bgcolor="#f3f3f3">
+<th id="01/09/2021" align=left>01/09/2021</th>
+<td headers="01/09/2021 nsa_initial_claims" align=right>1,082,696</td>
+<td headers="01/09/2021 sf_initial_claims" align=right>178,698.0</td>
+<td headers="01/09/2021 sa_initial_claims" align=right>904,000</td>
+<td headers="01/09/2021 sa_4_week_initial_claims" align=right>812,750</td>
+<td headers="01/09/2021 nsa_continued_claims" align=right>5,479,170</td>
+<td headers="01/09/2021 sf_continued_claims" align=right>418,513.0</td>
+<td headers="01/09/2021 sa_continued_claims" align=right>5,061,000</td>
+<td headers="01/09/2021 sa_4_week_continued_claims" align=right>5,198,000</td>
+<td headers="01/09/2021 nsa_iur" align=center>3.9</td>
+<td headers="01/09/2021 sa_iur" align=center>3.6</td>
+<td headers="01/09/2021 cov_employment" align=center>142,133,208</td>
+</tr>
+<tr>
+<th id="01/16/2021" align=left>01/16/2021</th>
+<td headers="01/16/2021 nsa_initial_claims" align=right>937,313</td>
+<td headers="01/16/2021 sf_initial_claims" align=right>51,013.0</td>
+<td headers="01/16/2021 sa_initial_claims" align=right>886,000</td>
+<td headers="01/16/2021 sa_4_week_initial_claims" align=right>833,500</td>
+<td headers="01/16/2021 nsa_continued_claims" align=right>5,218,474</td>
+<td headers="01/16/2021 sf_continued_claims" align=right>340,099.0</td>
+<td headers="01/16/2021 sa_continued_claims" align=right>4,878,000</td>
+<td headers="01/16/2021 sa_4_week_continued_claims" align=right>5,089,750</td>
+<td headers="01/16/2021 nsa_iur" align=center>3.7</td>
+<td headers="01/16/2021 sa_iur" align=center>3.4</td>
+<td headers="01/16/2021 cov_employment" align=center>142,133,208</td>
+</tr>
+<tr bgcolor="#f3f3f3">
+<th id="01/23/2021" align=left>01/23/2021</th>
+<td headers="01/23/2021 nsa_initial_claims" align=right>840,705</td>
+<td headers="01/23/2021 sf_initial_claims" align=right>5,168.0</td>
+<td headers="01/23/2021 sa_initial_claims" align=right>836,000</td>
+<td headers="01/23/2021 sa_4_week_initial_claims" align=right>851,750</td>
+<td headers="01/23/2021 nsa_continued_claims" align=right>5,193,816</td>
+<td headers="01/23/2021 sf_continued_claims" align=right>403,314.0</td>
+<td headers="01/23/2021 sa_continued_claims" align=right>4,791,000</td>
+<td headers="01/23/2021 sa_4_week_continued_claims" align=right>4,992,500</td>
+<td headers="01/23/2021 nsa_iur" align=center>3.7</td>
+<td headers="01/23/2021 sa_iur" align=center>3.4</td>
+<td headers="01/23/2021 cov_employment" align=center>142,133,208</td>
+</tr>
+<tr>
+<th id="01/30/2021" align=left>01/30/2021</th>
+<td headers="01/30/2021 nsa_initial_claims" align=right>849,650</td>
+<td headers="01/30/2021 sf_initial_claims" align=right>12,845.0</td>
+<td headers="01/30/2021 sa_initial_claims" align=right>837,000</td>
+<td headers="01/30/2021 sa_4_week_initial_claims" align=right>865,750</td>
+<td headers="01/30/2021 nsa_continued_claims" align=right>5,038,663</td>
+<td headers="01/30/2021 sf_continued_claims" align=right>383,881.0</td>
+<td headers="01/30/2021 sa_continued_claims" align=right>4,655,000</td>
+<td headers="01/30/2021 sa_4_week_continued_claims" align=right>4,846,250</td>
+<td headers="01/30/2021 nsa_iur" align=center>3.5</td>
+<td headers="01/30/2021 sa_iur" align=center>3.3</td>
+<td headers="01/30/2021 cov_employment" align=center>142,133,208</td>
+</tr>
+<tr bgcolor="#f3f3f3">
+<th id="02/06/2021" align=left>02/06/2021</th>
+<td headers="02/06/2021 nsa_initial_claims" align=right>868,053</td>
+<td headers="02/06/2021 sf_initial_claims" align=right>5,285.0</td>
+<td headers="02/06/2021 sa_initial_claims" align=right>863,000</td>
+<td headers="02/06/2021 sa_4_week_initial_claims" align=right>855,500</td>
+<td headers="02/06/2021 nsa_continued_claims" align=right>4,971,328</td>
+<td headers="02/06/2021 sf_continued_claims" align=right>379,432.0</td>
+<td headers="02/06/2021 sa_continued_claims" align=right>4,592,000</td>
+<td headers="02/06/2021 sa_4_week_continued_claims" align=right>4,729,000</td>
+<td headers="02/06/2021 nsa_iur" align=center>3.5</td>
+<td headers="02/06/2021 sa_iur" align=center>3.2</td>
+<td headers="02/06/2021 cov_employment" align=center>142,133,208</td>
+</tr>
+<tr>
+<th id="02/13/2021" align=left>02/13/2021</th>
+<td headers="02/13/2021 nsa_initial_claims" align=right>835,045</td>
+<td headers="02/13/2021 sf_initial_claims" align=right>-12,100.0</td>
+<td headers="02/13/2021 sa_initial_claims" align=right>847,000</td>
+<td headers="02/13/2021 sa_4_week_initial_claims" align=right>845,750</td>
+<td headers="02/13/2021 nsa_continued_claims" align=right>4,828,682</td>
+<td headers="02/13/2021 sf_continued_claims" align=right>359,920.0</td>
+<td headers="02/13/2021 sa_continued_claims" align=right>4,469,000</td>
+<td headers="02/13/2021 sa_4_week_continued_claims" align=right>4,626,750</td>
+<td headers="02/13/2021 nsa_iur" align=center>3.4</td>
+<td headers="02/13/2021 sa_iur" align=center>3.1</td>
+<td headers="02/13/2021 cov_employment" align=center>142,133,208</td>
+</tr>
+<tr bgcolor="#f3f3f3">
+<th id="02/20/2021" align=left>02/20/2021</th>
+<td headers="02/20/2021 nsa_initial_claims" align=right>716,559</td>
+<td headers="02/20/2021 sf_initial_claims" align=right>-30,548.0</td>
+<td headers="02/20/2021 sa_initial_claims" align=right>747,000</td>
+<td headers="02/20/2021 sa_4_week_initial_claims" align=right>823,500</td>
+<td headers="02/20/2021 nsa_continued_claims" align=right>4,848,404</td>
+<td headers="02/20/2021 sf_continued_claims" align=right>465,101.0</td>
+<td headers="02/20/2021 sa_continued_claims" align=right>4,383,000</td>
+<td headers="02/20/2021 sa_4_week_continued_claims" align=right>4,524,750</td>
+<td headers="02/20/2021 nsa_iur" align=center>3.4</td>
+<td headers="02/20/2021 sa_iur" align=center>3.1</td>
+<td headers="02/20/2021 cov_employment" align=center>142,133,208</td>
+</tr>
+<tr>
+<th id="02/27/2021" align=left>02/27/2021</th>
+<td headers="02/27/2021 nsa_initial_claims" align=right>756,629</td>
+<td headers="02/27/2021 sf_initial_claims" align=right>-4,296.0</td>
+<td headers="02/27/2021 sa_initial_claims" align=right>761,000</td>
+<td headers="02/27/2021 sa_4_week_initial_claims" align=right>804,500</td>
+<td headers="02/27/2021 nsa_continued_claims" align=right>4,582,021</td>
+<td headers="02/27/2021 sf_continued_claims" align=right>424,571.0</td>
+<td headers="02/27/2021 sa_continued_claims" align=right>4,157,000</td>
+<td headers="02/27/2021 sa_4_week_continued_claims" align=right>4,400,250</td>
+<td headers="02/27/2021 nsa_iur" align=center>3.2</td>
+<td headers="02/27/2021 sa_iur" align=center>2.9</td>
+<td headers="02/27/2021 cov_employment" align=center>142,133,208</td>
+</tr>
+<tr bgcolor="#f3f3f3">
+<th id="03/06/2021" align=left>03/06/2021</th>
+<td headers="03/06/2021 nsa_initial_claims" align=right>722,180</td>
+<td headers="03/06/2021 sf_initial_claims" align=right>-11,751.0</td>
+<td headers="03/06/2021 sa_initial_claims" align=right>734,000</td>
+<td headers="03/06/2021 sa_4_week_initial_claims" align=right>772,250</td>
+<td headers="03/06/2021 nsa_continued_claims" align=right>4,495,885</td>
+<td headers="03/06/2021 sf_continued_claims" align=right>373,005.0</td>
+<td headers="03/06/2021 sa_continued_claims" align=right>4,123,000</td>
+<td headers="03/06/2021 sa_4_week_continued_claims" align=right>4,283,000</td>
+<td headers="03/06/2021 nsa_iur" align=center>3.2</td>
+<td headers="03/06/2021 sa_iur" align=center>2.9</td>
+<td headers="03/06/2021 cov_employment" align=center>142,133,208</td>
+</tr>
+<tr>
+<th id="03/13/2021" align=left>03/13/2021</th>
+<td headers="03/13/2021 nsa_initial_claims" align=right>757,202</td>
+<td headers="03/13/2021 sf_initial_claims" align=right>-8,081.0</td>
+<td headers="03/13/2021 sa_initial_claims" align=right>765,000</td>
+<td headers="03/13/2021 sa_4_week_initial_claims" align=right>751,750</td>
+<td headers="03/13/2021 nsa_continued_claims" align=right>4,233,702</td>
+<td headers="03/13/2021 sf_continued_claims" align=right>393,192.0</td>
+<td headers="03/13/2021 sa_continued_claims" align=right>3,841,000</td>
+<td headers="03/13/2021 sa_4_week_continued_claims" align=right>4,126,000</td>
+<td headers="03/13/2021 nsa_iur" align=center>3.0</td>
+<td headers="03/13/2021 sa_iur" align=center>2.7</td>
+<td headers="03/13/2021 cov_employment" align=center>142,133,208</td>
+</tr>
+<tr bgcolor="#f3f3f3">
+<th id="03/20/2021" align=left>03/20/2021</th>
+<td headers="03/20/2021 nsa_initial_claims" align=right>651,153</td>
+<td headers="03/20/2021 sf_initial_claims" align=right>-7,242.0</td>
+<td headers="03/20/2021 sa_initial_claims" align=right>658,000</td>
+<td headers="03/20/2021 sa_4_week_initial_claims" align=right>729,500</td>
+<td headers="03/20/2021 nsa_continued_claims" align=right>4,102,303</td>
+<td headers="03/20/2021 sf_continued_claims" align=right>349,379.0</td>
+<td headers="03/20/2021 sa_continued_claims" align=right>3,753,000</td>
+<td headers="03/20/2021 sa_4_week_continued_claims" align=right>3,968,500</td>
+<td headers="03/20/2021 nsa_iur" align=center>2.9</td>
+<td headers="03/20/2021 sa_iur" align=center>2.6</td>
+<td headers="03/20/2021 cov_employment" align=center>142,133,208</td>
+</tr>
+<tr>
+<th id="03/27/2021" align=left>03/27/2021</th>
+<td headers="03/27/2021 nsa_initial_claims" align=right>723,653</td>
+<td headers="03/27/2021 sf_initial_claims" align=right>-5,065.0</td>
+<td headers="03/27/2021 sa_initial_claims" align=right>729,000</td>
+<td headers="03/27/2021 sa_4_week_initial_claims" align=right>721,500</td>
+<td headers="03/27/2021 nsa_continued_claims" align=right>4,015,277</td>
+<td headers="03/27/2021 sf_continued_claims" align=right>298,005.0</td>
+<td headers="03/27/2021 sa_continued_claims" align=right>3,717,000</td>
+<td headers="03/27/2021 sa_4_week_continued_claims" align=right>3,858,500</td>
+<td headers="03/27/2021 nsa_iur" align=center>2.8</td>
+<td headers="03/27/2021 sa_iur" align=center>2.6</td>
+<td headers="03/27/2021 cov_employment" align=center>142,133,208</td>
+</tr>
+<tr bgcolor="#f3f3f3">
+<th id="04/03/2021" align=left>04/03/2021</th>
+<td headers="04/03/2021 nsa_initial_claims" align=right>738,734</td>
+<td headers="04/03/2021 sf_initial_claims" align=right>-2,857.0</td>
+<td headers="04/03/2021 sa_initial_claims" align=right>742,000</td>
+<td headers="04/03/2021 sa_4_week_initial_claims" align=right>723,500</td>
+<td headers="04/03/2021 nsa_continued_claims" align=right>3,913,719</td>
+<td headers="04/03/2021 sf_continued_claims" align=right>206,100.0</td>
+<td headers="04/03/2021 sa_continued_claims" align=right>3,708,000</td>
+<td headers="04/03/2021 sa_4_week_continued_claims" align=right>3,754,750</td>
+<td headers="04/03/2021 nsa_iur" align=center>2.8</td>
+<td headers="04/03/2021 sa_iur" align=center>2.7</td>
+<td headers="04/03/2021 cov_employment" align=center>139,248,565</td>
+</tr>
+<tr>
+<th id="04/10/2021" align=left>04/10/2021</th>
+<td headers="04/10/2021 nsa_initial_claims" align=right>622,628</td>
+<td headers="04/10/2021 sf_initial_claims" align=right>36,830.0</td>
+<td headers="04/10/2021 sa_initial_claims" align=right>586,000</td>
+<td headers="04/10/2021 sa_4_week_initial_claims" align=right>678,750</td>
+<td headers="04/10/2021 nsa_continued_claims" align=right>3,840,457</td>
+<td headers="04/10/2021 sf_continued_claims" align=right>188,955.0</td>
+<td headers="04/10/2021 sa_continued_claims" align=right>3,652,000</td>
+<td headers="04/10/2021 sa_4_week_continued_claims" align=right>3,707,500</td>
+<td headers="04/10/2021 nsa_iur" align=center>2.8</td>
+<td headers="04/10/2021 sa_iur" align=center>2.6</td>
+<td headers="04/10/2021 cov_employment" align=center>139,248,565</td>
+</tr>
+<tr bgcolor="#f3f3f3">
+<th id="04/17/2021" align=left>04/17/2021</th>
+<td headers="04/17/2021 nsa_initial_claims" align=right>584,836</td>
+<td headers="04/17/2021 sf_initial_claims" align=right>19,282.0</td>
+<td headers="04/17/2021 sa_initial_claims" align=right>566,000</td>
+<td headers="04/17/2021 sa_4_week_initial_claims" align=right>655,750</td>
+<td headers="04/17/2021 nsa_continued_claims" align=right>3,783,595</td>
+<td headers="04/17/2021 sf_continued_claims" align=right>130,399.0</td>
+<td headers="04/17/2021 sa_continued_claims" align=right>3,653,000</td>
+<td headers="04/17/2021 sa_4_week_continued_claims" align=right>3,682,500</td>
+<td headers="04/17/2021 nsa_iur" align=center>2.7</td>
+<td headers="04/17/2021 sa_iur" align=center>2.6</td>
+<td headers="04/17/2021 cov_employment" align=center>139,248,565</td>
+</tr>
+<tr>
+<th id="04/24/2021" align=left>04/24/2021</th>
+<td headers="04/24/2021 nsa_initial_claims" align=right>612,060</td>
+<td headers="04/24/2021 sf_initial_claims" align=right>21,988.0</td>
+<td headers="04/24/2021 sa_initial_claims" align=right>590,000</td>
+<td headers="04/24/2021 sa_4_week_initial_claims" align=right>621,000</td>
+<td headers="04/24/2021 nsa_continued_claims" align=right>3,776,257</td>
+<td headers="04/24/2021 sf_continued_claims" align=right>95,785.0</td>
+<td headers="04/24/2021 sa_continued_claims" align=right>3,680,000</td>
+<td headers="04/24/2021 sa_4_week_continued_claims" align=right>3,673,250</td>
+<td headers="04/24/2021 nsa_iur" align=center>2.7</td>
+<td headers="04/24/2021 sa_iur" align=center>2.6</td>
+<td headers="04/24/2021 cov_employment" align=center>139,248,565</td>
+</tr>
+<tr bgcolor="#f3f3f3">
+<th id="05/01/2021" align=left>05/01/2021</th>
+<td headers="05/01/2021 nsa_initial_claims" align=right>513,722</td>
+<td headers="05/01/2021 sf_initial_claims" align=right>6,480.0</td>
+<td headers="05/01/2021 sa_initial_claims" align=right>507,000</td>
+<td headers="05/01/2021 sa_4_week_initial_claims" align=right>562,250</td>
+<td headers="05/01/2021 nsa_continued_claims" align=right>3,694,436</td>
+<td headers="05/01/2021 sf_continued_claims" align=right>54,170.0</td>
+<td headers="05/01/2021 sa_continued_claims" align=right>3,640,000</td>
+<td headers="05/01/2021 sa_4_week_continued_claims" align=right>3,656,250</td>
+<td headers="05/01/2021 nsa_iur" align=center>2.7</td>
+<td headers="05/01/2021 sa_iur" align=center>2.6</td>
+<td headers="05/01/2021 cov_employment" align=center>139,248,565</td>
+</tr>
+<tr>
+<th id="05/08/2021" align=left>05/08/2021</th>
+<td headers="05/08/2021 nsa_initial_claims" align=right>492,029</td>
+<td headers="05/08/2021 sf_initial_claims" align=right>14,389.0</td>
+<td headers="05/08/2021 sa_initial_claims" align=right>478,000</td>
+<td headers="05/08/2021 sa_4_week_initial_claims" align=right>535,250</td>
+<td headers="05/08/2021 nsa_continued_claims" align=right>3,671,344</td>
+<td headers="05/08/2021 sf_continued_claims" align=right>-67,038.0</td>
+<td headers="05/08/2021 sa_continued_claims" align=right>3,738,000</td>
+<td headers="05/08/2021 sa_4_week_continued_claims" align=right>3,677,750</td>
+<td headers="05/08/2021 nsa_iur" align=center>2.6</td>
+<td headers="05/08/2021 sa_iur" align=center>2.7</td>
+<td headers="05/08/2021 cov_employment" align=center>139,248,565</td>
+</tr>
+<tr bgcolor="#f3f3f3">
+<th id="05/15/2021" align=left>05/15/2021</th>
+<td headers="05/15/2021 nsa_initial_claims" align=right>454,603</td>
+<td headers="05/15/2021 sf_initial_claims" align=right>10,975.0</td>
+<td headers="05/15/2021 sa_initial_claims" align=right>444,000</td>
+<td headers="05/15/2021 sa_4_week_initial_claims" align=right>504,750</td>
+<td headers="05/15/2021 nsa_continued_claims" align=right>3,490,005</td>
+<td headers="05/15/2021 sf_continued_claims" align=right>-120,521.0</td>
+<td headers="05/15/2021 sa_continued_claims" align=right>3,611,000</td>
+<td headers="05/15/2021 sa_4_week_continued_claims" align=right>3,667,250</td>
+<td headers="05/15/2021 nsa_iur" align=center>2.5</td>
+<td headers="05/15/2021 sa_iur" align=center>2.6</td>
+<td headers="05/15/2021 cov_employment" align=center>139,248,565</td>
+</tr>
+<tr>
+<th id="05/22/2021" align=left>05/22/2021</th>
+<td headers="05/22/2021 nsa_initial_claims" align=right>419,436</td>
+<td headers="05/22/2021 sf_initial_claims" align=right>14,907.0</td>
+<td headers="05/22/2021 sa_initial_claims" align=right>405,000</td>
+<td headers="05/22/2021 sa_4_week_initial_claims" align=right>458,500</td>
+<td headers="05/22/2021 nsa_continued_claims" align=right>3,502,402</td>
+<td headers="05/22/2021 sf_continued_claims" align=right>-267,059.0</td>
+<td headers="05/22/2021 sa_continued_claims" align=right>3,769,000</td>
+<td headers="05/22/2021 sa_4_week_continued_claims" align=right>3,689,500</td>
+<td headers="05/22/2021 nsa_iur" align=center>2.5</td>
+<td headers="05/22/2021 sa_iur" align=center>2.7</td>
+<td headers="05/22/2021 cov_employment" align=center>139,248,565</td>
+</tr>
+<tr bgcolor="#f3f3f3">
+<th id="05/29/2021" align=left>05/29/2021</th>
+<td headers="05/29/2021 nsa_initial_claims" align=right>428,671</td>
+<td headers="05/29/2021 sf_initial_claims" align=right>40,500.0</td>
+<td headers="05/29/2021 sa_initial_claims" align=right>388,000</td>
+<td headers="05/29/2021 sa_4_week_initial_claims" align=right>428,750</td>
+<td headers="05/29/2021 nsa_continued_claims" align=right>3,333,475</td>
+<td headers="05/29/2021 sf_continued_claims" align=right>-183,311.0</td>
+<td headers="05/29/2021 sa_continued_claims" align=right>3,517,000</td>
+<td headers="05/29/2021 sa_4_week_continued_claims" align=right>3,658,750</td>
+<td headers="05/29/2021 nsa_iur" align=center>2.4</td>
+<td headers="05/29/2021 sa_iur" align=center>2.5</td>
+<td headers="05/29/2021 cov_employment" align=center>139,248,565</td>
+</tr>
+<tr>
+<th id="06/05/2021" align=left>06/05/2021</th>
+<td headers="06/05/2021 nsa_initial_claims" align=right>364,577</td>
+<td headers="06/05/2021 sf_initial_claims" align=right>-9,326.0</td>
+<td headers="06/05/2021 sa_initial_claims" align=right>374,000</td>
+<td headers="06/05/2021 sa_4_week_initial_claims" align=right>402,750</td>
+<td headers="06/05/2021 nsa_continued_claims" align=right>3,297,986</td>
+<td headers="06/05/2021 sf_continued_claims" align=right>-229,962.0</td>
+<td headers="06/05/2021 sa_continued_claims" align=right>3,528,000</td>
+<td headers="06/05/2021 sa_4_week_continued_claims" align=right>3,606,250</td>
+<td headers="06/05/2021 nsa_iur" align=center>2.4</td>
+<td headers="06/05/2021 sa_iur" align=center>2.5</td>
+<td headers="06/05/2021 cov_employment" align=center>139,248,565</td>
+</tr>
+<tr bgcolor="#f3f3f3">
+<th id="06/12/2021" align=left>06/12/2021</th>
+<td headers="06/12/2021 nsa_initial_claims" align=right>407,798</td>
+<td headers="06/12/2021 sf_initial_claims" align=right>-9,758.0</td>
+<td headers="06/12/2021 sa_initial_claims" align=right>418,000</td>
+<td headers="06/12/2021 sa_4_week_initial_claims" align=right>396,250</td>
+<td headers="06/12/2021 nsa_continued_claims" align=right>3,232,186</td>
+<td headers="06/12/2021 sf_continued_claims" align=right>-179,598.0</td>
+<td headers="06/12/2021 sa_continued_claims" align=right>3,412,000</td>
+<td headers="06/12/2021 sa_4_week_continued_claims" align=right>3,556,500</td>
+<td headers="06/12/2021 nsa_iur" align=center>2.3</td>
+<td headers="06/12/2021 sa_iur" align=center>2.5</td>
+<td headers="06/12/2021 cov_employment" align=center>139,248,565</td>
+</tr>
+<tr>
+<th id="06/19/2021" align=left>06/19/2021</th>
+<td headers="06/19/2021 nsa_initial_claims" align=right>398,284</td>
+<td headers="06/19/2021 sf_initial_claims" align=right>-17,581.0</td>
+<td headers="06/19/2021 sa_initial_claims" align=right>416,000</td>
+<td headers="06/19/2021 sa_4_week_initial_claims" align=right>399,000</td>
+<td headers="06/19/2021 nsa_continued_claims" align=right>3,285,178</td>
+<td headers="06/19/2021 sf_continued_claims" align=right>-198,630.0</td>
+<td headers="06/19/2021 sa_continued_claims" align=right>3,484,000</td>
+<td headers="06/19/2021 sa_4_week_continued_claims" align=right>3,485,250</td>
+<td headers="06/19/2021 nsa_iur" align=center>2.4</td>
+<td headers="06/19/2021 sa_iur" align=center>2.5</td>
+<td headers="06/19/2021 cov_employment" align=center>139,248,565</td>
+</tr>
+<tr bgcolor="#f3f3f3">
+<th id="06/26/2021" align=left>06/26/2021</th>
+<td headers="06/26/2021 nsa_initial_claims" align=right>362,899</td>
+<td headers="06/26/2021 sf_initial_claims" align=right>-4,872.0</td>
+<td headers="06/26/2021 sa_initial_claims" align=right>368,000</td>
+<td headers="06/26/2021 sa_4_week_initial_claims" align=right>394,000</td>
+<td headers="06/26/2021 nsa_continued_claims" align=right>3,264,013</td>
+<td headers="06/26/2021 sf_continued_claims" align=right>-103,221.0</td>
+<td headers="06/26/2021 sa_continued_claims" align=right>3,367,000</td>
+<td headers="06/26/2021 sa_4_week_continued_claims" align=right>3,447,750</td>
+<td headers="06/26/2021 nsa_iur" align=center>2.3</td>
+<td headers="06/26/2021 sa_iur" align=center>2.4</td>
+<td headers="06/26/2021 cov_employment" align=center>139,248,565</td>
+</tr>
+<tr>
+<th id="07/03/2021" align=left>07/03/2021</th>
+<td headers="07/03/2021 nsa_initial_claims" align=right>382,622</td>
+<td headers="07/03/2021 sf_initial_claims" align=right>-3,290.0</td>
+<td headers="07/03/2021 sa_initial_claims" align=right>386,000</td>
+<td headers="07/03/2021 sa_4_week_initial_claims" align=right>397,000</td>
+<td headers="07/03/2021 nsa_continued_claims" align=right>3,143,720</td>
+<td headers="07/03/2021 sf_continued_claims" align=right>-121,122.0</td>
+<td headers="07/03/2021 sa_continued_claims" align=right>3,265,000</td>
+<td headers="07/03/2021 sa_4_week_continued_claims" align=right>3,382,000</td>
+<td headers="07/03/2021 nsa_iur" align=center>2.3</td>
+<td headers="07/03/2021 sa_iur" align=center>2.4</td>
+<td headers="07/03/2021 cov_employment" align=center>137,027,194</td>
+</tr>
+<tr bgcolor="#f3f3f3">
+<th id="07/10/2021" align=left>07/10/2021</th>
+<td headers="07/10/2021 nsa_initial_claims" align=right>391,574</td>
+<td headers="07/10/2021 sf_initial_claims" align=right>23,244.0</td>
+<td headers="07/10/2021 sa_initial_claims" align=right>368,000</td>
+<td headers="07/10/2021 sa_4_week_initial_claims" align=right>384,500</td>
+<td headers="07/10/2021 nsa_continued_claims" align=right>3,275,513</td>
+<td headers="07/10/2021 sf_continued_claims" align=right>13,768.0</td>
+<td headers="07/10/2021 sa_continued_claims" align=right>3,262,000</td>
+<td headers="07/10/2021 sa_4_week_continued_claims" align=right>3,344,500</td>
+<td headers="07/10/2021 nsa_iur" align=center>2.4</td>
+<td headers="07/10/2021 sa_iur" align=center>2.4</td>
+<td headers="07/10/2021 cov_employment" align=center>137,027,194</td>
+</tr>
+<tr>
+<th id="07/17/2021" align=left>07/17/2021</th>
+<td headers="07/17/2021 nsa_initial_claims" align=right>411,244</td>
+<td headers="07/17/2021 sf_initial_claims" align=right>-13,147.0</td>
+<td headers="07/17/2021 sa_initial_claims" align=right>424,000</td>
+<td headers="07/17/2021 sa_4_week_initial_claims" align=right>386,500</td>
+<td headers="07/17/2021 nsa_continued_claims" align=right>3,273,673</td>
+<td headers="07/17/2021 sf_continued_claims" align=right>-22,069.0</td>
+<td headers="07/17/2021 sa_continued_claims" align=right>3,296,000</td>
+<td headers="07/17/2021 sa_4_week_continued_claims" align=right>3,297,500</td>
+<td headers="07/17/2021 nsa_iur" align=center>2.4</td>
+<td headers="07/17/2021 sa_iur" align=center>2.4</td>
+<td headers="07/17/2021 cov_employment" align=center>137,027,194</td>
+</tr>
+<tr bgcolor="#f3f3f3">
+<th id="07/24/2021" align=left>07/24/2021</th>
+<td headers="07/24/2021 nsa_initial_claims" align=right>344,332</td>
+<td headers="07/24/2021 sf_initial_claims" align=right>-54,953.0</td>
+<td headers="07/24/2021 sa_initial_claims" align=right>399,000</td>
+<td headers="07/24/2021 sa_4_week_initial_claims" align=right>394,250</td>
+<td headers="07/24/2021 nsa_continued_claims" align=right>2,930,341</td>
+<td headers="07/24/2021 sf_continued_claims" align=right>-49,285.0</td>
+<td headers="07/24/2021 sa_continued_claims" align=right>2,980,000</td>
+<td headers="07/24/2021 sa_4_week_continued_claims" align=right>3,200,750</td>
+<td headers="07/24/2021 nsa_iur" align=center>2.1</td>
+<td headers="07/24/2021 sa_iur" align=center>2.2</td>
+<td headers="07/24/2021 cov_employment" align=center>137,027,194</td>
+</tr>
+<tr>
+<th id="07/31/2021" align=left>07/31/2021</th>
+<td headers="07/31/2021 nsa_initial_claims" align=right>325,715</td>
+<td headers="07/31/2021 sf_initial_claims" align=right>-60,977.0</td>
+<td headers="07/31/2021 sa_initial_claims" align=right>387,000</td>
+<td headers="07/31/2021 sa_4_week_initial_claims" align=right>394,500</td>
+<td headers="07/31/2021 nsa_continued_claims" align=right>2,850,397</td>
+<td headers="07/31/2021 sf_continued_claims" align=right>-48,326.0</td>
+<td headers="07/31/2021 sa_continued_claims" align=right>2,899,000</td>
+<td headers="07/31/2021 sa_4_week_continued_claims" align=right>3,109,250</td>
+<td headers="07/31/2021 nsa_iur" align=center>2.1</td>
+<td headers="07/31/2021 sa_iur" align=center>2.1</td>
+<td headers="07/31/2021 cov_employment" align=center>137,027,194</td>
+</tr>
+<tr bgcolor="#f3f3f3">
+<th id="08/07/2021" align=left>08/07/2021</th>
+<td headers="08/07/2021 nsa_initial_claims" align=right>323,043</td>
+<td headers="08/07/2021 sf_initial_claims" align=right>-54,287.0</td>
+<td headers="08/07/2021 sa_initial_claims" align=right>377,000</td>
+<td headers="08/07/2021 sa_4_week_initial_claims" align=right>396,750</td>
+<td headers="08/07/2021 nsa_continued_claims" align=right>2,808,106</td>
+<td headers="08/07/2021 sf_continued_claims" align=right>-56,555.0</td>
+<td headers="08/07/2021 sa_continued_claims" align=right>2,865,000</td>
+<td headers="08/07/2021 sa_4_week_continued_claims" align=right>3,010,000</td>
+<td headers="08/07/2021 nsa_iur" align=center>2.0</td>
+<td headers="08/07/2021 sa_iur" align=center>2.1</td>
+<td headers="08/07/2021 cov_employment" align=center>137,027,194</td>
+</tr>
+<tr>
+<th id="08/14/2021" align=left>08/14/2021</th>
+<td headers="08/14/2021 nsa_initial_claims" align=right>309,464</td>
+<td headers="08/14/2021 sf_initial_claims" align=right>-39,386.0</td>
+<td headers="08/14/2021 sa_initial_claims" align=right>349,000</td>
+<td headers="08/14/2021 sa_4_week_initial_claims" align=right>378,000</td>
+<td headers="08/14/2021 nsa_continued_claims" align=right>2,809,749</td>
+<td headers="08/14/2021 sf_continued_claims" align=right>-98,706.0</td>
+<td headers="08/14/2021 sa_continued_claims" align=right>2,908,000</td>
+<td headers="08/14/2021 sa_4_week_continued_claims" align=right>2,913,000</td>
+<td headers="08/14/2021 nsa_iur" align=center>2.1</td>
+<td headers="08/14/2021 sa_iur" align=center>2.1</td>
+<td headers="08/14/2021 cov_employment" align=center>137,027,194</td>
+</tr>
+<tr bgcolor="#f3f3f3">
+<th id="08/21/2021" align=left>08/21/2021</th>
+<td headers="08/21/2021 nsa_initial_claims" align=right>298,791</td>
+<td headers="08/21/2021 sf_initial_claims" align=right>-55,250.0</td>
+<td headers="08/21/2021 sa_initial_claims" align=right>354,000</td>
+<td headers="08/21/2021 sa_4_week_initial_claims" align=right>366,750</td>
+<td headers="08/21/2021 nsa_continued_claims" align=right>2,674,766</td>
+<td headers="08/21/2021 sf_continued_claims" align=right>-130,475.0</td>
+<td headers="08/21/2021 sa_continued_claims" align=right>2,805,000</td>
+<td headers="08/21/2021 sa_4_week_continued_claims" align=right>2,869,250</td>
+<td headers="08/21/2021 nsa_iur" align=center>2.0</td>
+<td headers="08/21/2021 sa_iur" align=center>2.0</td>
+<td headers="08/21/2021 cov_employment" align=center>137,027,194</td>
+</tr>
+<tr>
+<th id="08/28/2021" align=left>08/28/2021</th>
+<td headers="08/28/2021 nsa_initial_claims" align=right>292,292</td>
+<td headers="08/28/2021 sf_initial_claims" align=right>-52,457.0</td>
+<td headers="08/28/2021 sa_initial_claims" align=right>345,000</td>
+<td headers="08/28/2021 sa_4_week_initial_claims" align=right>356,250</td>
+<td headers="08/28/2021 nsa_continued_claims" align=right>2,668,643</td>
+<td headers="08/28/2021 sf_continued_claims" align=right>-183,389.0</td>
+<td headers="08/28/2021 sa_continued_claims" align=right>2,852,000</td>
+<td headers="08/28/2021 sa_4_week_continued_claims" align=right>2,857,500</td>
+<td headers="08/28/2021 nsa_iur" align=center>1.9</td>
+<td headers="08/28/2021 sa_iur" align=center>2.1</td>
+<td headers="08/28/2021 cov_employment" align=center>137,027,194</td>
+</tr>
+<tr bgcolor="#f3f3f3">
+<th id="09/04/2021" align=left>09/04/2021</th>
+<td headers="09/04/2021 nsa_initial_claims" align=right>285,950</td>
+<td headers="09/04/2021 sf_initial_claims" align=right>-25,551.0</td>
+<td headers="09/04/2021 sa_initial_claims" align=right>312,000</td>
+<td headers="09/04/2021 sa_4_week_initial_claims" align=right>340,000</td>
+<td headers="09/04/2021 nsa_continued_claims" align=right>2,377,945</td>
+<td headers="09/04/2021 sf_continued_claims" align=right>-336,566.0</td>
+<td headers="09/04/2021 sa_continued_claims" align=right>2,715,000</td>
+<td headers="09/04/2021 sa_4_week_continued_claims" align=right>2,820,000</td>
+<td headers="09/04/2021 nsa_iur" align=center>1.7</td>
+<td headers="09/04/2021 sa_iur" align=center>2.0</td>
+<td headers="09/04/2021 cov_employment" align=center>137,027,194</td>
+</tr>
+<tr>
+<th id="09/11/2021" align=left>09/11/2021</th>
+<td headers="09/11/2021 nsa_initial_claims" align=right>265,902</td>
+<td headers="09/11/2021 sf_initial_claims" align=right>-69,071.0</td>
+<td headers="09/11/2021 sa_initial_claims" align=right>335,000</td>
+<td headers="09/11/2021 sa_4_week_initial_claims" align=right>336,500</td>
+<td headers="09/11/2021 nsa_continued_claims" align=right>2,509,919</td>
+<td headers="09/11/2021 sf_continued_claims" align=right>-309,969.0</td>
+<td headers="09/11/2021 sa_continued_claims" align=right>2,820,000</td>
+<td headers="09/11/2021 sa_4_week_continued_claims" align=right>2,798,000</td>
+<td headers="09/11/2021 nsa_iur" align=center>1.8</td>
+<td headers="09/11/2021 sa_iur" align=center>2.1</td>
+<td headers="09/11/2021 cov_employment" align=center>137,027,194</td>
+</tr>
+<tr bgcolor="#f3f3f3">
+<th id="09/18/2021" align=left>09/18/2021</th>
+<td headers="09/18/2021 nsa_initial_claims" align=right>306,581</td>
+<td headers="09/18/2021 sf_initial_claims" align=right>-44,544.0</td>
+<td headers="09/18/2021 sa_initial_claims" align=right>351,000</td>
+<td headers="09/18/2021 sa_4_week_initial_claims" align=right>335,750</td>
+<td headers="09/18/2021 nsa_continued_claims" align=right>2,469,954</td>
+<td headers="09/18/2021 sf_continued_claims" align=right>-340,948.0</td>
+<td headers="09/18/2021 sa_continued_claims" align=right>2,811,000</td>
+<td headers="09/18/2021 sa_4_week_continued_claims" align=right>2,799,500</td>
+<td headers="09/18/2021 nsa_iur" align=center>1.8</td>
+<td headers="09/18/2021 sa_iur" align=center>2.1</td>
+<td headers="09/18/2021 cov_employment" align=center>137,027,194</td>
+</tr>
+<tr>
+<th id="09/25/2021" align=left>09/25/2021</th>
+<td headers="09/25/2021 nsa_initial_claims" align=right>300,473</td>
+<td headers="09/25/2021 sf_initial_claims" align=right>-63,484.0</td>
+<td headers="09/25/2021 sa_initial_claims" align=right>364,000</td>
+<td headers="09/25/2021 sa_4_week_initial_claims" align=right>340,500</td>
+<td headers="09/25/2021 nsa_continued_claims" align=right>2,404,342</td>
+<td headers="09/25/2021 sf_continued_claims" align=right>-323,030.0</td>
+<td headers="09/25/2021 sa_continued_claims" align=right>2,727,000</td>
+<td headers="09/25/2021 sa_4_week_continued_claims" align=right>2,768,250</td>
+<td headers="09/25/2021 nsa_iur" align=center>1.8</td>
+<td headers="09/25/2021 sa_iur" align=center>2.0</td>
+<td headers="09/25/2021 cov_employment" align=center>137,027,194</td>
+</tr>
+<tr bgcolor="#f3f3f3">
+<th id="10/02/2021" align=left>10/02/2021</th>
+<td headers="10/02/2021 nsa_initial_claims" align=right>261,615</td>
+<td headers="10/02/2021 sf_initial_claims" align=right>-67,195.0</td>
+<td headers="10/02/2021 sa_initial_claims" align=right>329,000</td>
+<td headers="10/02/2021 sa_4_week_initial_claims" align=right>344,750</td>
+<td headers="10/02/2021 nsa_continued_claims" align=right>2,262,787</td>
+<td headers="10/02/2021 sf_continued_claims" align=right>-339,881.0</td>
+<td headers="10/02/2021 sa_continued_claims" align=right>2,603,000</td>
+<td headers="10/02/2021 sa_4_week_continued_claims" align=right>2,740,250</td>
+<td headers="10/02/2021 nsa_iur" align=center>1.7</td>
+<td headers="10/02/2021 sa_iur" align=center>1.9</td>
+<td headers="10/02/2021 cov_employment" align=center>135,015,266</td>
+</tr>
+<tr>
+<th id="10/09/2021" align=left>10/09/2021</th>
+<td headers="10/09/2021 nsa_initial_claims" align=right>280,597</td>
+<td headers="10/09/2021 sf_initial_claims" align=right>-15,177.0</td>
+<td headers="10/09/2021 sa_initial_claims" align=right>296,000</td>
+<td headers="10/09/2021 sa_4_week_initial_claims" align=right>335,000</td>
+<td headers="10/09/2021 nsa_continued_claims" align=right>2,168,231</td>
+<td headers="10/09/2021 sf_continued_claims" align=right>-311,856.0</td>
+<td headers="10/09/2021 sa_continued_claims" align=right>2,480,000</td>
+<td headers="10/09/2021 sa_4_week_continued_claims" align=right>2,655,250</td>
+<td headers="10/09/2021 nsa_iur" align=center>1.6</td>
+<td headers="10/09/2021 sa_iur" align=center>1.8</td>
+<td headers="10/09/2021 cov_employment" align=center>135,015,266</td>
+</tr>
+<tr bgcolor="#f3f3f3">
+<th id="10/16/2021" align=left>10/16/2021</th>
+<td headers="10/16/2021 nsa_initial_claims" align=right>257,215</td>
+<td headers="10/16/2021 sf_initial_claims" align=right>-33,677.0</td>
+<td headers="10/16/2021 sa_initial_claims" align=right>291,000</td>
+<td headers="10/16/2021 sa_4_week_initial_claims" align=right>320,000</td>
+<td headers="10/16/2021 nsa_continued_claims" align=right>1,986,626</td>
+<td headers="10/16/2021 sf_continued_claims" align=right>-252,136.0</td>
+<td headers="10/16/2021 sa_continued_claims" align=right>2,239,000</td>
+<td headers="10/16/2021 sa_4_week_continued_claims" align=right>2,512,250</td>
+<td headers="10/16/2021 nsa_iur" align=center>1.5</td>
+<td headers="10/16/2021 sa_iur" align=center>1.7</td>
+<td headers="10/16/2021 cov_employment" align=center>135,015,266</td>
+</tr>
+<tr>
+<th id="10/23/2021" align=left>10/23/2021</th>
+<td headers="10/23/2021 nsa_initial_claims" align=right>247,330</td>
+<td headers="10/23/2021 sf_initial_claims" align=right>-35,800.0</td>
+<td headers="10/23/2021 sa_initial_claims" align=right>283,000</td>
+<td headers="10/23/2021 sa_4_week_initial_claims" align=right>299,750</td>
+<td headers="10/23/2021 nsa_continued_claims" align=right>1,884,992</td>
+<td headers="10/23/2021 sf_continued_claims" align=right>-216,105.0</td>
+<td headers="10/23/2021 sa_continued_claims" align=right>2,101,000</td>
+<td headers="10/23/2021 sa_4_week_continued_claims" align=right>2,355,750</td>
+<td headers="10/23/2021 nsa_iur" align=center>1.4</td>
+<td headers="10/23/2021 sa_iur" align=center>1.6</td>
+<td headers="10/23/2021 cov_employment" align=center>135,015,266</td>
+</tr>
+<tr bgcolor="#f3f3f3">
+<th id="10/30/2021" align=left>10/30/2021</th>
+<td headers="10/30/2021 nsa_initial_claims" align=right>241,719</td>
+<td headers="10/30/2021 sf_initial_claims" align=right>-28,928.0</td>
+<td headers="10/30/2021 sa_initial_claims" align=right>271,000</td>
+<td headers="10/30/2021 sa_4_week_initial_claims" align=right>285,250</td>
+<td headers="10/30/2021 nsa_continued_claims" align=right>1,952,921</td>
+<td headers="10/30/2021 sf_continued_claims" align=right>-255,766.0</td>
+<td headers="10/30/2021 sa_continued_claims" align=right>2,209,000</td>
+<td headers="10/30/2021 sa_4_week_continued_claims" align=right>2,257,250</td>
+<td headers="10/30/2021 nsa_iur" align=center>1.4</td>
+<td headers="10/30/2021 sa_iur" align=center>1.6</td>
+<td headers="10/30/2021 cov_employment" align=center>135,015,266</td>
+</tr>
+<tr>
+<th id="11/06/2021" align=left>11/06/2021</th>
+<td headers="11/06/2021 nsa_initial_claims" align=right>257,033</td>
+<td headers="11/06/2021 sf_initial_claims" align=right>-12,080.0</td>
+<td headers="11/06/2021 sa_initial_claims" align=right>269,000</td>
+<td headers="11/06/2021 sa_4_week_initial_claims" align=right>278,500</td>
+<td headers="11/06/2021 nsa_continued_claims" align=right>1,783,320</td>
+<td headers="11/06/2021 sf_continued_claims" align=right>-325,819.0</td>
+<td headers="11/06/2021 sa_continued_claims" align=right>2,109,000</td>
+<td headers="11/06/2021 sa_4_week_continued_claims" align=right>2,164,500</td>
+<td headers="11/06/2021 nsa_iur" align=center>1.3</td>
+<td headers="11/06/2021 sa_iur" align=center>1.6</td>
+<td headers="11/06/2021 cov_employment" align=center>135,015,266</td>
+</tr>
+<tr bgcolor="#f3f3f3">
+<th id="11/13/2021" align=left>11/13/2021</th>
+<td headers="11/13/2021 nsa_initial_claims" align=right>240,435</td>
+<td headers="11/13/2021 sf_initial_claims" align=right>-29,148.0</td>
+<td headers="11/13/2021 sa_initial_claims" align=right>270,000</td>
+<td headers="11/13/2021 sa_4_week_initial_claims" align=right>273,250</td>
+<td headers="11/13/2021 nsa_continued_claims" align=right>1,820,571</td>
+<td headers="11/13/2021 sf_continued_claims" align=right>-234,695.0</td>
+<td headers="11/13/2021 sa_continued_claims" align=right>2,055,000</td>
+<td headers="11/13/2021 sa_4_week_continued_claims" align=right>2,118,500</td>
+<td headers="11/13/2021 nsa_iur" align=center>1.3</td>
+<td headers="11/13/2021 sa_iur" align=center>1.5</td>
+<td headers="11/13/2021 cov_employment" align=center>135,015,266</td>
+</tr>
+<tr>
+<th id="11/20/2021" align=left>11/20/2021</th>
+<td headers="11/20/2021 nsa_initial_claims" align=right>253,369</td>
+<td headers="11/20/2021 sf_initial_claims" align=right>59,424.0</td>
+<td headers="11/20/2021 sa_initial_claims" align=right>194,000</td>
+<td headers="11/20/2021 sa_4_week_initial_claims" align=right>251,000</td>
+<td headers="11/20/2021 nsa_continued_claims" align=right>1,561,249</td>
+<td headers="11/20/2021 sf_continued_claims" align=right>-392,637.0</td>
+<td headers="11/20/2021 sa_continued_claims" align=right>1,954,000</td>
+<td headers="11/20/2021 sa_4_week_continued_claims" align=right>2,081,750</td>
+<td headers="11/20/2021 nsa_iur" align=center>1.2</td>
+<td headers="11/20/2021 sa_iur" align=center>1.4</td>
+<td headers="11/20/2021 cov_employment" align=center>135,015,266</td>
+</tr>
+<tr bgcolor="#f3f3f3">
+<th id="11/27/2021" align=left>11/27/2021</th>
+<td headers="11/27/2021 nsa_initial_claims" align=right>216,985</td>
+<td headers="11/27/2021 sf_initial_claims" align=right>-9,880.0</td>
+<td headers="11/27/2021 sa_initial_claims" align=right>227,000</td>
+<td headers="11/27/2021 sa_4_week_initial_claims" align=right>240,000</td>
+<td headers="11/27/2021 nsa_continued_claims" align=right>1,965,792</td>
+<td headers="11/27/2021 sf_continued_claims" align=right>-33,123.0</td>
+<td headers="11/27/2021 sa_continued_claims" align=right>1,999,000</td>
+<td headers="11/27/2021 sa_4_week_continued_claims" align=right>2,029,250</td>
+<td headers="11/27/2021 nsa_iur" align=center>1.5</td>
+<td headers="11/27/2021 sa_iur" align=center>1.5</td>
+<td headers="11/27/2021 cov_employment" align=center>135,015,266</td>
+</tr>
+<tr>
+<th id="12/04/2021" align=left>12/04/2021</th>
+<td headers="12/04/2021 nsa_initial_claims noinfo" align=right>&#160;</td>
+<td headers="12/04/2021 sf_initial_claims" align=right>96,167.0</td>
+<td headers="12/04/2021 sa_initial_claims noinfo" align=right>&#160;</td>
+<td headers="12/04/2021 sa_4_week_initial_claims noinfo" align=right>&#160;</td>
+<td headers="12/04/2021 nsa_continued_claims noinfo" align=right>&#160;</td>
+<td headers="12/04/2021 sf_continued_claims" align=right>-132,387.0</td>
+<td headers="12/04/2021 sa_continued_claims noinfo" align=right>&#160;</td>
+<td headers="12/04/2021 sa_4_week_continued_claims noinfo" align=right>&#160;</td>
+<td headers="12/04/2021 nsa_iur noinfo" align=center>&#160;</td>
+<td headers="12/04/2021 sa_iur noinfo" align=center>&#160;</td>
+<td headers="12/04/2021 cov_employment noinfo" align=center>&#160;</td>
+</tr>
+<tr bgcolor="#f3f3f3">
+<th id="12/11/2021" align=left>12/11/2021</th>
+<td headers="12/11/2021 nsa_initial_claims noinfo" align=right>&#160;</td>
+<td headers="12/11/2021 sf_initial_claims" align=right>61,178.0</td>
+<td headers="12/11/2021 sa_initial_claims noinfo" align=right>&#160;</td>
+<td headers="12/11/2021 sa_4_week_initial_claims noinfo" align=right>&#160;</td>
+<td headers="12/11/2021 nsa_continued_claims noinfo" align=right>&#160;</td>
+<td headers="12/11/2021 sf_continued_claims" align=right>-28,299.0</td>
+<td headers="12/11/2021 sa_continued_claims noinfo" align=right>&#160;</td>
+<td headers="12/11/2021 sa_4_week_continued_claims noinfo" align=right>&#160;</td>
+<td headers="12/11/2021 nsa_iur noinfo" align=center>&#160;</td>
+<td headers="12/11/2021 sa_iur noinfo" align=center>&#160;</td>
+<td headers="12/11/2021 cov_employment noinfo" align=center>&#160;</td>
+</tr>
+<tr>
+<th id="12/18/2021" align=left>12/18/2021</th>
+<td headers="12/18/2021 nsa_initial_claims noinfo" align=right>&#160;</td>
+<td headers="12/18/2021 sf_initial_claims" align=right>49,433.0</td>
+<td headers="12/18/2021 sa_initial_claims noinfo" align=right>&#160;</td>
+<td headers="12/18/2021 sa_4_week_initial_claims noinfo" align=right>&#160;</td>
+<td headers="12/18/2021 nsa_continued_claims noinfo" align=right>&#160;</td>
+<td headers="12/18/2021 sf_continued_claims" align=right>-79,192.0</td>
+<td headers="12/18/2021 sa_continued_claims noinfo" align=right>&#160;</td>
+<td headers="12/18/2021 sa_4_week_continued_claims noinfo" align=right>&#160;</td>
+<td headers="12/18/2021 nsa_iur noinfo" align=center>&#160;</td>
+<td headers="12/18/2021 sa_iur noinfo" align=center>&#160;</td>
+<td headers="12/18/2021 cov_employment noinfo" align=center>&#160;</td>
+</tr>
+<tr bgcolor="#f3f3f3">
+<th id="12/25/2021" align=left>12/25/2021</th>
+<td headers="12/25/2021 nsa_initial_claims noinfo" align=right>&#160;</td>
+<td headers="12/25/2021 sf_initial_claims" align=right>58,255.0</td>
+<td headers="12/25/2021 sa_initial_claims noinfo" align=right>&#160;</td>
+<td headers="12/25/2021 sa_4_week_initial_claims noinfo" align=right>&#160;</td>
+<td headers="12/25/2021 nsa_continued_claims noinfo" align=right>&#160;</td>
+<td headers="12/25/2021 sf_continued_claims" align=right>116,737.0</td>
+<td headers="12/25/2021 sa_continued_claims noinfo" align=right>&#160;</td>
+<td headers="12/25/2021 sa_4_week_continued_claims noinfo" align=right>&#160;</td>
+<td headers="12/25/2021 nsa_iur noinfo" align=center>&#160;</td>
+<td headers="12/25/2021 sa_iur noinfo" align=center>&#160;</td>
+<td headers="12/25/2021 cov_employment noinfo" align=center>&#160;</td>
+</tr>
+<tr>
+<th id="01/01/2022" align=left>01/01/2022</th>
+<td headers="01/01/2022 nsa_initial_claims noinfo" align=right>&#160;</td>
+<td headers="01/01/2022 sf_initial_claims" align=right>108,719.0</td>
+<td headers="01/01/2022 sa_initial_claims noinfo" align=right>&#160;</td>
+<td headers="01/01/2022 sa_4_week_initial_claims noinfo" align=right>&#160;</td>
+<td headers="01/01/2022 nsa_continued_claims noinfo" align=right>&#160;</td>
+<td headers="01/01/2022 sf_continued_claims" align=right>498,243.0</td>
+<td headers="01/01/2022 sa_continued_claims noinfo" align=right>&#160;</td>
+<td headers="01/01/2022 sa_4_week_continued_claims noinfo" align=right>&#160;</td>
+<td headers="01/01/2022 nsa_iur noinfo" align=center>&#160;</td>
+<td headers="01/01/2022 sa_iur noinfo" align=center>&#160;</td>
+<td headers="01/01/2022 cov_employment noinfo" align=center>&#160;</td>
+</tr>
+<tr bgcolor="#f3f3f3">
+<th id="01/08/2022" align=left>01/08/2022</th>
+<td headers="01/08/2022 nsa_initial_claims noinfo" align=right>&#160;</td>
+<td headers="01/08/2022 sf_initial_claims" align=right>189,791.0</td>
+<td headers="01/08/2022 sa_initial_claims noinfo" align=right>&#160;</td>
+<td headers="01/08/2022 sa_4_week_initial_claims noinfo" align=right>&#160;</td>
+<td headers="01/08/2022 nsa_continued_claims noinfo" align=right>&#160;</td>
+<td headers="01/08/2022 sf_continued_claims" align=right>440,913.0</td>
+<td headers="01/08/2022 sa_continued_claims noinfo" align=right>&#160;</td>
+<td headers="01/08/2022 sa_4_week_continued_claims noinfo" align=right>&#160;</td>
+<td headers="01/08/2022 nsa_iur noinfo" align=center>&#160;</td>
+<td headers="01/08/2022 sa_iur noinfo" align=center>&#160;</td>
+<td headers="01/08/2022 cov_employment noinfo" align=center>&#160;</td>
+</tr>
+<tr>
+<th id="01/15/2022" align=left>01/15/2022</th>
+<td headers="01/15/2022 nsa_initial_claims noinfo" align=right>&#160;</td>
+<td headers="01/15/2022 sf_initial_claims" align=right>51,018.0</td>
+<td headers="01/15/2022 sa_initial_claims noinfo" align=right>&#160;</td>
+<td headers="01/15/2022 sa_4_week_initial_claims noinfo" align=right>&#160;</td>
+<td headers="01/15/2022 nsa_continued_claims noinfo" align=right>&#160;</td>
+<td headers="01/15/2022 sf_continued_claims" align=right>329,659.0</td>
+<td headers="01/15/2022 sa_continued_claims noinfo" align=right>&#160;</td>
+<td headers="01/15/2022 sa_4_week_continued_claims noinfo" align=right>&#160;</td>
+<td headers="01/15/2022 nsa_iur noinfo" align=center>&#160;</td>
+<td headers="01/15/2022 sa_iur noinfo" align=center>&#160;</td>
+<td headers="01/15/2022 cov_employment noinfo" align=center>&#160;</td>
+</tr>
+<tr bgcolor="#f3f3f3">
+<th id="01/22/2022" align=left>01/22/2022</th>
+<td headers="01/22/2022 nsa_initial_claims noinfo" align=right>&#160;</td>
+<td headers="01/22/2022 sf_initial_claims" align=right>7,736.0</td>
+<td headers="01/22/2022 sa_initial_claims noinfo" align=right>&#160;</td>
+<td headers="01/22/2022 sa_4_week_initial_claims noinfo" align=right>&#160;</td>
+<td headers="01/22/2022 nsa_continued_claims noinfo" align=right>&#160;</td>
+<td headers="01/22/2022 sf_continued_claims" align=right>413,043.0</td>
+<td headers="01/22/2022 sa_continued_claims noinfo" align=right>&#160;</td>
+<td headers="01/22/2022 sa_4_week_continued_claims noinfo" align=right>&#160;</td>
+<td headers="01/22/2022 nsa_iur noinfo" align=center>&#160;</td>
+<td headers="01/22/2022 sa_iur noinfo" align=center>&#160;</td>
+<td headers="01/22/2022 cov_employment noinfo" align=center>&#160;</td>
+</tr>
+<tr>
+<th id="01/29/2022" align=left>01/29/2022</th>
+<td headers="01/29/2022 nsa_initial_claims noinfo" align=right>&#160;</td>
+<td headers="01/29/2022 sf_initial_claims" align=right>18,919.0</td>
+<td headers="01/29/2022 sa_initial_claims noinfo" align=right>&#160;</td>
+<td headers="01/29/2022 sa_4_week_initial_claims noinfo" align=right>&#160;</td>
+<td headers="01/29/2022 nsa_continued_claims noinfo" align=right>&#160;</td>
+<td headers="01/29/2022 sf_continued_claims" align=right>380,166.0</td>
+<td headers="01/29/2022 sa_continued_claims noinfo" align=right>&#160;</td>
+<td headers="01/29/2022 sa_4_week_continued_claims noinfo" align=right>&#160;</td>
+<td headers="01/29/2022 nsa_iur noinfo" align=center>&#160;</td>
+<td headers="01/29/2022 sa_iur noinfo" align=center>&#160;</td>
+<td headers="01/29/2022 cov_employment noinfo" align=center>&#160;</td>
+</tr>
+<tr bgcolor="#f3f3f3">
+<th id="02/05/2022" align=left>02/05/2022</th>
+<td headers="02/05/2022 nsa_initial_claims noinfo" align=right>&#160;</td>
+<td headers="02/05/2022 sf_initial_claims" align=right>5,422.0</td>
+<td headers="02/05/2022 sa_initial_claims noinfo" align=right>&#160;</td>
+<td headers="02/05/2022 sa_4_week_initial_claims noinfo" align=right>&#160;</td>
+<td headers="02/05/2022 nsa_continued_claims noinfo" align=right>&#160;</td>
+<td headers="02/05/2022 sf_continued_claims" align=right>382,163.0</td>
+<td headers="02/05/2022 sa_continued_claims noinfo" align=right>&#160;</td>
+<td headers="02/05/2022 sa_4_week_continued_claims noinfo" align=right>&#160;</td>
+<td headers="02/05/2022 nsa_iur noinfo" align=center>&#160;</td>
+<td headers="02/05/2022 sa_iur noinfo" align=center>&#160;</td>
+<td headers="02/05/2022 cov_employment noinfo" align=center>&#160;</td>
+</tr>
+<tr>
+<th id="02/12/2022" align=left>02/12/2022</th>
+<td headers="02/12/2022 nsa_initial_claims noinfo" align=right>&#160;</td>
+<td headers="02/12/2022 sf_initial_claims" align=right>-9,254.0</td>
+<td headers="02/12/2022 sa_initial_claims noinfo" align=right>&#160;</td>
+<td headers="02/12/2022 sa_4_week_initial_claims noinfo" align=right>&#160;</td>
+<td headers="02/12/2022 nsa_continued_claims noinfo" align=right>&#160;</td>
+<td headers="02/12/2022 sf_continued_claims" align=right>436,540.0</td>
+<td headers="02/12/2022 sa_continued_claims noinfo" align=right>&#160;</td>
+<td headers="02/12/2022 sa_4_week_continued_claims noinfo" align=right>&#160;</td>
+<td headers="02/12/2022 nsa_iur noinfo" align=center>&#160;</td>
+<td headers="02/12/2022 sa_iur noinfo" align=center>&#160;</td>
+<td headers="02/12/2022 cov_employment noinfo" align=center>&#160;</td>
+</tr>
+<tr bgcolor="#f3f3f3">
+<th id="02/19/2022" align=left>02/19/2022</th>
+<td headers="02/19/2022 nsa_initial_claims noinfo" align=right>&#160;</td>
+<td headers="02/19/2022 sf_initial_claims" align=right>-17,182.0</td>
+<td headers="02/19/2022 sa_initial_claims noinfo" align=right>&#160;</td>
+<td headers="02/19/2022 sa_4_week_initial_claims noinfo" align=right>&#160;</td>
+<td headers="02/19/2022 nsa_continued_claims noinfo" align=right>&#160;</td>
+<td headers="02/19/2022 sf_continued_claims" align=right>382,878.0</td>
+<td headers="02/19/2022 sa_continued_claims noinfo" align=right>&#160;</td>
+<td headers="02/19/2022 sa_4_week_continued_claims noinfo" align=right>&#160;</td>
+<td headers="02/19/2022 nsa_iur noinfo" align=center>&#160;</td>
+<td headers="02/19/2022 sa_iur noinfo" align=center>&#160;</td>
+<td headers="02/19/2022 cov_employment noinfo" align=center>&#160;</td>
+</tr>
+<tr>
+<th id="02/26/2022" align=left>02/26/2022</th>
+<td headers="02/26/2022 nsa_initial_claims noinfo" align=right>&#160;</td>
+<td headers="02/26/2022 sf_initial_claims" align=right>-20,167.0</td>
+<td headers="02/26/2022 sa_initial_claims noinfo" align=right>&#160;</td>
+<td headers="02/26/2022 sa_4_week_initial_claims noinfo" align=right>&#160;</td>
+<td headers="02/26/2022 nsa_continued_claims noinfo" align=right>&#160;</td>
+<td headers="02/26/2022 sf_continued_claims" align=right>422,146.0</td>
+<td headers="02/26/2022 sa_continued_claims noinfo" align=right>&#160;</td>
+<td headers="02/26/2022 sa_4_week_continued_claims noinfo" align=right>&#160;</td>
+<td headers="02/26/2022 nsa_iur noinfo" align=center>&#160;</td>
+<td headers="02/26/2022 sa_iur noinfo" align=center>&#160;</td>
+<td headers="02/26/2022 cov_employment noinfo" align=center>&#160;</td>
+</tr>
+<tr bgcolor="#f3f3f3">
+<th id="03/05/2022" align=left>03/05/2022</th>
+<td headers="03/05/2022 nsa_initial_claims noinfo" align=right>&#160;</td>
+<td headers="03/05/2022 sf_initial_claims" align=right>-9,213.0</td>
+<td headers="03/05/2022 sa_initial_claims noinfo" align=right>&#160;</td>
+<td headers="03/05/2022 sa_4_week_initial_claims noinfo" align=right>&#160;</td>
+<td headers="03/05/2022 nsa_continued_claims noinfo" align=right>&#160;</td>
+<td headers="03/05/2022 sf_continued_claims" align=right>387,005.0</td>
+<td headers="03/05/2022 sa_continued_claims noinfo" align=right>&#160;</td>
+<td headers="03/05/2022 sa_4_week_continued_claims noinfo" align=right>&#160;</td>
+<td headers="03/05/2022 nsa_iur noinfo" align=center>&#160;</td>
+<td headers="03/05/2022 sa_iur noinfo" align=center>&#160;</td>
+<td headers="03/05/2022 cov_employment noinfo" align=center>&#160;</td>
+</tr>
+<tr>
+<th id="03/12/2022" align=left>03/12/2022</th>
+<td headers="03/12/2022 nsa_initial_claims noinfo" align=right>&#160;</td>
+<td headers="03/12/2022 sf_initial_claims" align=right>-10,699.0</td>
+<td headers="03/12/2022 sa_initial_claims noinfo" align=right>&#160;</td>
+<td headers="03/12/2022 sa_4_week_initial_claims noinfo" align=right>&#160;</td>
+<td headers="03/12/2022 nsa_continued_claims noinfo" align=right>&#160;</td>
+<td headers="03/12/2022 sf_continued_claims" align=right>380,154.0</td>
+<td headers="03/12/2022 sa_continued_claims noinfo" align=right>&#160;</td>
+<td headers="03/12/2022 sa_4_week_continued_claims noinfo" align=right>&#160;</td>
+<td headers="03/12/2022 nsa_iur noinfo" align=center>&#160;</td>
+<td headers="03/12/2022 sa_iur noinfo" align=center>&#160;</td>
+<td headers="03/12/2022 cov_employment noinfo" align=center>&#160;</td>
+</tr>
+<tr bgcolor="#f3f3f3">
+<th id="03/19/2022" align=left>03/19/2022</th>
+<td headers="03/19/2022 nsa_initial_claims noinfo" align=right>&#160;</td>
+<td headers="03/19/2022 sf_initial_claims" align=right>-5,619.0</td>
+<td headers="03/19/2022 sa_initial_claims noinfo" align=right>&#160;</td>
+<td headers="03/19/2022 sa_4_week_initial_claims noinfo" align=right>&#160;</td>
+<td headers="03/19/2022 nsa_continued_claims noinfo" align=right>&#160;</td>
+<td headers="03/19/2022 sf_continued_claims" align=right>368,828.0</td>
+<td headers="03/19/2022 sa_continued_claims noinfo" align=right>&#160;</td>
+<td headers="03/19/2022 sa_4_week_continued_claims noinfo" align=right>&#160;</td>
+<td headers="03/19/2022 nsa_iur noinfo" align=center>&#160;</td>
+<td headers="03/19/2022 sa_iur noinfo" align=center>&#160;</td>
+<td headers="03/19/2022 cov_employment noinfo" align=center>&#160;</td>
+</tr>
+<tr>
+<th id="03/26/2022" align=left>03/26/2022</th>
+<td headers="03/26/2022 nsa_initial_claims noinfo" align=right>&#160;</td>
+<td headers="03/26/2022 sf_initial_claims" align=right>-6,396.0</td>
+<td headers="03/26/2022 sa_initial_claims noinfo" align=right>&#160;</td>
+<td headers="03/26/2022 sa_4_week_initial_claims noinfo" align=right>&#160;</td>
+<td headers="03/26/2022 nsa_continued_claims noinfo" align=right>&#160;</td>
+<td headers="03/26/2022 sf_continued_claims" align=right>298,207.0</td>
+<td headers="03/26/2022 sa_continued_claims noinfo" align=right>&#160;</td>
+<td headers="03/26/2022 sa_4_week_continued_claims noinfo" align=right>&#160;</td>
+<td headers="03/26/2022 nsa_iur noinfo" align=center>&#160;</td>
+<td headers="03/26/2022 sa_iur noinfo" align=center>&#160;</td>
+<td headers="03/26/2022 cov_employment noinfo" align=center>&#160;</td>
+</tr>
+<tr bgcolor="#f3f3f3">
+<th id="04/02/2022" align=left>04/02/2022</th>
+<td headers="04/02/2022 nsa_initial_claims noinfo" align=right>&#160;</td>
+<td headers="04/02/2022 sf_initial_claims" align=right>1,141.0</td>
+<td headers="04/02/2022 sa_initial_claims noinfo" align=right>&#160;</td>
+<td headers="04/02/2022 sa_4_week_initial_claims noinfo" align=right>&#160;</td>
+<td headers="04/02/2022 nsa_continued_claims noinfo" align=right>&#160;</td>
+<td headers="04/02/2022 sf_continued_claims" align=right>223,765.0</td>
+<td headers="04/02/2022 sa_continued_claims noinfo" align=right>&#160;</td>
+<td headers="04/02/2022 sa_4_week_continued_claims noinfo" align=right>&#160;</td>
+<td headers="04/02/2022 nsa_iur noinfo" align=center>&#160;</td>
+<td headers="04/02/2022 sa_iur noinfo" align=center>&#160;</td>
+<td headers="04/02/2022 cov_employment noinfo" align=center>&#160;</td>
+</tr>
+	
+</table>
+ <p>Run Date: 12/28/2021</p>
+	
