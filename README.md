@@ -18,7 +18,7 @@ I will be showcasing the following Data Science and Software Engineering Best Pr
 
 As in my previous project, I have also documented the work in the blog below:
 
-#### My BLOG is HERE: https://hmelendez001.github.io/2022/01/26/Udacity-Data-Scientist-Nanodegree-Project-4-Capstone.html
+#### My BLOG is HERE: https://hmelendez001.github.io/2022/01/26/Udacity-Data-Scientist-Nanodegree-Capstone.html
 
 # How to Run the Web Application
 From the app folder run the following python command:<p/>
