@@ -64,15 +64,15 @@ The application will also show you some stock recommendations for other ticker o
 | app > \_\_init__.py | This file allows the folder to be set up as a Python module |
 | app > run.py | The Flask file that runs the web application |
 | data | The directory contaning the raw data for this project |
-| data > DatabaseCache.db | The SQL Lite connection file for caching daily API calls |
 | data > All_Data_Nasdaq.csv | The raw data NASDAQ Equity stock data |
+| data > DatabaseCache.db | The SQL Lite connection file for caching daily API calls |
+| data > DOL_Weekly_Unemployment_US_2021.csv | The pre-processed Unemployment data from the Department of Labor Bureau web site limited to national 2021 numbers |
+| data > Global_Mobility_Report_US_2021.csv | The raw Google mobility report for the US year 2021 |
 | data > all_stocks_swingtradebot_dot_com.csv | The raw Equity stock data from SwingTradeBot.com |
 | data > bitcoin_stock_2021.csv | The raw Equity stock data from Yahoo! Finance for 2021 USD BTC or BitCoin |
 | data > cpi_index_2021.csv | The raw Equity price data from Yahoo! Finance for 2021 Consumer Price Index (CPI) |
 | data > djia_index_2021.csv | The raw Equity price data from Yahoo! Finance for 2021 Dow Jones Industrial Average (DJIA) |
-| data > DOL_Weekly_Unemployment_US_2021.csv | The pre-processed Unemployment data from the Department of Labor Bureau web site limited to national 2021 numbers |
 | data > future_prices_2022.csv | The raw Equity price data from Yahoo! Finance for year to date 2022 Tesla Motors (TLSA), Apple (AAPL), and Microsoft (MSFT) |
-| data > Global_Mobility_Report_US_2021.csv | The raw Google mobility report for the US year 2021 |
 | data > nasdaq_composite_index_2021.csv | The raw Equity price data from Yahoo! Finance for the 2021 NASDAQ Composite Index |
 | data > r539cy_DOL_Unemployment.csv | The raw Unemployment data from the Department of Labor Bureau web site |
 | data > sp500_index_2021.csv | The raw Equity price data from Yahoo! Finance for 2021 S&P 500 index |
@@ -81,6 +81,7 @@ The application will also show you some stock recommendations for other ticker o
 | images | Used to store some screenshot images for this file |
 | images > Project2DisasterDashboardBootstrap5.png | Screenshot of the web application landing page used below |
 | images > Project2DisasterResultBootstrap5.png | Screenshot of the web application results page used below |
+| LICENSE | The MIT License file |
 | Procfile | Instructs the runtime to use gunicorn to run our dashboard |
 | README.md | The file you are currently reading |
 | nltk.txt | This will tell Heroku to automatically download the modules in this file and install them into our application at build time |
