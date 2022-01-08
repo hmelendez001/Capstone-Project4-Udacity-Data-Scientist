@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Helder's Stock Predictor</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT" crossorigin="anonymous"></script> 
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <!-- Bootstrap 5 does not have its own icon library. To use Font Awesome icons, we add the following to your HTML page -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/"><i class="fa fa-fw fa-home"></i> Disaster Reponse Project</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="https://udacity.com/" target="_blank"><i class="fa fa-graduation-cap"></i> Udacity</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-fw fa-envelope"></i>
+            Contact
+          </a>
+         <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+            <li><a class="dropdown-item" href="https://github.com/hmelendez001" target="_blank"><i class="fab fa-github"></i> GitHub</a></li>
+            <li><a class="dropdown-item" href="https://linkedin.com/in/hmelende" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+            <li><a class="dropdown-item" href="https://twitter.com/@MelendezHelder" target="_blank"><i class="fab fa-twitter"></i> Twitter</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Boostrap 5 apparently does not have the jumbotron class anymore (see https://getbootstrap.com/docs/5.0/migration/#jumbotron), 
+so below is a close replacement thanks to user Guilder at https://stackoverflow.com/a/68063389/2788414
+<div class="jumbotron">
+    <div class="container">
+https://media.gettyimages.com/photos/home-destroyed-by-tornado-picture-id184642678?s=2048x2048
+https://media.gettyimages.com/photos/baca-campo-tornado-picture-id104043623?s=2048x2048
+https://media.gettyimages.com/photos/flood-picture-id184878691?s=2048x2048
+https://media.gettyimages.com/photos/home-in-stormy-day-picture-id165995076?s=2048x2048
+https://media.gettyimages.com/photos/earthquake-picture-id145643623?s=2048x2048
+https://media.gettyimages.com/photos/dramatic-tornado-view-picture-id1029369178?s=2048x2048
+https://media.gettyimages.com/photos/huge-chunks-of-ice-propelled-by-wind-and-flood-waters-threatens-on-picture-id1148105270?s=2048x2048
+https://media.gettyimages.com/photos/rotating-mesocyclone-storm-works-its-way-across-the-great-plains-of-picture-id614939260?s=2048x2048
+https://media.gettyimages.com/photos/birmingham-alabama-ef5-tornado-damage-picture-id134078189?s=2048x2048
+https://media.gettyimages.com/photos/bush-fire-destruction-with-home-picture-id1195478775?s=2048x2048
+https://media.gettyimages.com/photos/silhouette-helicopter-extinguishing-forest-fire-while-flying-over-picture-id667761533?s=2048x2048
+https://media.gettyimages.com/photos/flood-picture-id87126512?s=2048x2048
+https://media.gettyimages.com/photos/illinois-man-with-son-wading-in-floodwaters-picture-id545869361?s=2048x2048
+https://media.gettyimages.com/photos/hurricane-winds-knock-down-an-oak-tree-picture-id847689834?s=2048x2048
+      -->
+
+<div class="container-fluid text-sm-center p-5 bg-light" style="
+    background-image: url('https://media.gettyimages.com/photos/flood-picture-id184878691?s=2048x2048');">
+    <div class="container bg-light p-5">
+        <h1 class="display-2"">Capstone Project: Stock Predictor and Recommender</h1>
+        <p class="lead">Predicting future stock prices and recomending similar names</p>
+        <hr />
+      
+        <div class="row">
+            <div class="col-lg-12 form-group-lg">
+                <form action="/go" method="get">
+                    <input type="text" class="form-control form-control-lg" name="query" placeholder="Enter an equity ticker or name to train">
+                    <p/>
+                    <div class="col-xs-1" align="center">
+                        <button type="submit" class="btn btn-lg btn-success">Train</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        {% block message %}
+        {% endblock %}
+
+    </div>
+</div>
+
+<div class="container">
+    {% block content %}
+    <div class="row">
+        <div class="col">
+          <h1 class="text-center">Overview of Training Dataset</h1>
+        </div>
+    </div>
+    {% endblock %}
+  
+	<div class="row">
+    {% for id in ids %}
+    	<div class="col">
+      	  <div id="{{id}}"></div>
+    	</div>
+  	{% endfor %}
+	</div>
+</div>
+
+<footer>
+    <script type="text/javascript">
+        // plots the figure with id
+        // id much match the div id above in the html
+        var figures = {{figuresJSON | safe}};
+        var ids = {{ids | safe}};
+        for(var i in figures) {
+            Plotly.plot(ids[i],
+                figures[i].data,
+                figures[i].layout || {});
+        }
+    </script>
+</footer>
+
+</body>
+</html>
