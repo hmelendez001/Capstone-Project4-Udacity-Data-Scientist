@@ -4,31 +4,20 @@ import re
 import numpy as np
 import pandas as pd
 
-import nltk
-nltk.download(['punkt', 'stopwords', 'wordnet', 'averaged_perceptron_tagger'])
-
 from flask import Flask
 from flask import render_template, request, jsonify
 from plotly.graph_objs import Bar, Pie
-#import sklearn.external.joblib as extjoblib
 import joblib
 from sqlalchemy import create_engine
 import sys
-sys.path.append('../models')
-from UrgencyWordExtractor import UrgencyWordExtractor
-from MyTokenize import MyTokenize
 
 
 app = Flask(__name__)
 
 
 # load data
-engine = create_engine('sqlite:///../data/DisasterResponse.db')
+engine = create_engine('sqlite:///../data/DatabaseCache.db')
 df = pd.read_sql_table('Messages', engine)
-
-# load model
-model = joblib.load("../models/classifier.pkl")
-
 
 # index webpage displays cool visuals and receives user input text for model
 @app.route('/')
