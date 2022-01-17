@@ -3,10 +3,11 @@ import plotly
 import re
 import numpy as np
 import pandas as pd
+import logging
 
 from flask import Flask
 from flask import render_template, request, jsonify
-from plotly.graph_objs import Bar, Pie
+from plotly.graph_objs import Line
 import joblib
 from sqlalchemy import create_engine
 import sys
@@ -17,7 +18,11 @@ app = Flask(__name__)
 
 # load data
 engine = create_engine('sqlite:///../data/DatabaseCache.db')
-df = pd.read_sql_table('Messages', engine)
+#df = pd.read_sql_table('Messages', engine)
+df = pd.read_csv('../data/initial_stocks.csv')
+universe = pd.read_csv('../data/all_stocks_swingtradebot_dot_com.csv')
+universe_list = universe['symbol'] + " | " + universe['name']
+myuniverse = universe[universe['symbol'].isin(df['Symbol'].unique())]
 
 # index webpage displays cool visuals and receives user input text for model
 @app.route('/')
@@ -33,63 +38,40 @@ def index():
     string
         Return the generated HTML for this page
     """    
-    # extract data needed for visuals
-    genre_counts = df.groupby('genre').count()['message']
-    genre_names = list(genre_counts.index)
-
-    # create a percentage count of all categories that are represented in the data
-    category_counts = []
-    category_names = []
-    total_count = 0
-    for column in df.columns:
-        if (column not in ['id', 'message', 'original', 'genre']):
-            category_count = df.loc[df[column] != 0, column].sum()
-            if (category_count > 0):
-                category_counts.append(category_count)
-                category_names.append(column.replace("_", " "))
-                total_count += category_count
-    category_counts = [acount / total_count for acount in category_counts]
-    
     # create visuals
+    symbols = df['Symbol'].unique()
     figures = [
         {
             'data': [
-                Bar(
-                    x=genre_names,
-                    y=genre_counts,
-                )
+                Line(
+                    x=df[df['Symbol'] == symbol]['Date'],
+                    y=df[df['Symbol'] == symbol]['Adj Close'],
+                    name=symbol
+                ) for symbol in symbols
             ],
 
             'layout': {
-                'title': 'Distribution of Message Genres',
+                'title': 'Historical Prices',
                 'yaxis': {
-                    'title': "Count"
+                    'title': "Price"
                 },
                 'xaxis': {
-                    'title': "Genre"
+                    'title': "Date"
                 },
-            },
-        },
-        {
-            'data': [
-                Pie(
-                    labels=category_names,
-                    values=category_counts,
-                ),
-            ],
-
-            'layout': {
-                'title': 'Distribution of Represented Categories',
             },
         },
     ]
     
     # encode plotly figures in JSON
     ids = ["figure-{}".format(i) for i, _ in enumerate(figures)]
+    ##app.logger.debug("******************** Symbols: {}".format(symbols.tolist()))
     figuresJSON = json.dumps(figures, cls=plotly.utils.PlotlyJSONEncoder)
+
+    symbols = myuniverse[myuniverse['symbol'].isin(symbols)]
+    symbols = universe_list##symbols['symbol'] + " | " + symbols['name']
     
     # render web page with plotly figures
-    return render_template('master.html', ids=ids, figuresJSON=figuresJSON)
+    return render_template('master.html', ids=ids, figuresJSON=figuresJSON, symbols=json.dumps(symbols.tolist()), tables=[myuniverse.to_html(classes='table table-striped')], titles=myuniverse.columns.values)
 
 
 # web page that handles user query and displays model results
