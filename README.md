@@ -25,7 +25,12 @@ From the app folder run the following python command:<p/>
 ##### &nbsp;&nbsp;&nbsp;&nbsp; python run.py
 ---
 You should see something like this on a local browser
-<img src='images/Project2DisasterDashboardBootstrap5.png'>
+<img src='images/Project4CapstoneStockPredictorMaster.png'>
+
+# How to Clear the Session or "Start Over"
+The web application uses a Flask Session to persist updates made through the web application. If at any point you want to start over or reset this "cache" then simply remove the flask_session directory which gets created:<p/>
+##### &nbsp;&nbsp;&nbsp;&nbsp; rmdir flask_session
+
 ---
 #### Alternatively you can run my Heroku web installation here: https://helderstockpredictor.herokuapp.com/
 
@@ -34,7 +39,7 @@ From the dashboard landing page beginning typing the name of a stock ticker or n
 The application will also show you some stock recommendations for other ticker or symbols that are similar to the one you selected, using a Content Recommendation Engine.
 
 ---
-<img src='images/Project2DisasterResultBootstrap5.png'>
+<img src='images/Project4CapstoneStockPredictorPredict.png'>
 ---
 
 # Libraries Used
