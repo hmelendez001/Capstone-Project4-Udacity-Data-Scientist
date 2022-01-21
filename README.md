@@ -41,9 +41,11 @@ The application will also show you some stock recommendations for other ticker o
 | Library | Description |
 | :--- | :--- |
 | Bootstrap | This toolkit was used to simplify writing the HTML5 elements including CSS styles in our web application |
-| Flask | This Python micro web framework was used to write the backend of our web application dashboard |
+| Flask | This Python micro web framework was used to write the backend of our web application |
+| Flask-Session | This is a utility for managing Session state in our Flask web application |
 | Gunicorn | This is needed for web application deployment |
 | Heroku | This is used to access the hosting platform |
+| Jinja2 | Utility for running Python constructs inside of HTML for our web application |
 | JQuery | This is the javascript for manipulating objects on the UI web application dashboard |
 | Json | This is the package for manipulating JSON text and objects |
 | Matplotlib | This was the graphing library used to generate visualizations in our Jupyter Notebook analysis and testing |
@@ -53,16 +55,25 @@ The application will also show you some stock recommendations for other ticker o
 | Seaborn | This was the visualization library used to generate heatmaps in our Jupyter Notebook analysis and testing  |
 | Sklearn | This is the scikit-learn's Pipeline and LinearRegression used to build and run our machine learning model |
 | Sqlalchemy | This is the SQLite database package used to write and read to and from the SQL database |
+| YFinance | This is the Yahoo Finance API module |
 
 # Files in this Repository
 | File | Description |
 | :--- | :--- |
 | app | The dashboard or web application main directory |
+| app > static | Directory containing static content such as CSS cascading stylesheets or JavaScript for the web application |
+| app > static > css | Directory containing the CSS cascading stylesheets used to style (color, size, fonts, etc.) for the web application |
+| app > static > css > dashboard.css | The main CSS cascading stylesheet used to style (color, size, fonts, etc.) the web application |
+| app > static > scripts | Directory containing the common JavaScript code for the web application |
+| app > static > scripts > dashboard.js | The main JavaScript file for the web application |
 | app > templates | Directory with the HTML files for the web application |
-| app > templates > go.html | Page which displays the classification results of the web application |
+| app > templates > errormodal.html | Common HTML code to implement a Bootstrap Modal error popup for our web application |
 | app > templates > master.html | The main page or the landing of the web application |
+| app > templates > navbar.html | The left navigation menu for all the pages of the web application |
+| app > templates > predict.html | The page used for predicting or forecasting stock prices on the web application |
+| app > templates > recommend.html | The page used for displaying stock recommendations on the web application |
 | app > \_\_init__.py | This file allows the folder to be set up as a Python module |
-| app > run.py | The Flask file that runs the web application |
+| app > run.py | The Flask Python code that runs the web application |
 | data | The directory contaning the raw data for this project |
 | data > All_Data_Nasdaq.csv | The raw data NASDAQ Equity stock data |
 | data > DatabaseCache.db | The SQL Lite connection file for caching daily API calls |
