@@ -38,3 +38,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
   // Your code to run since DOM is loaded and ready
   });
   // END: From https://bbbootstrap.com/snippets/bootstrap-5-sidebar-menu-toggle-button-34132202
+
+  function showError(msg, context='') {
+    document.getElementById('modal-error-display').innerHTML = msg
+    document.getElementById('modal-error-subdisplay').innerHTML = context
+    $('#modal-error').modal('show')
+  }
+
