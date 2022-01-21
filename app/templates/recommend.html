@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <!-- Bootstrap is developed mobile first, a strategy in which we optimize code for mobile devices first and then scale up components 
+      as necessary using CSS media queries. To ensure proper rendering and touch zooming for all devices, add this responsive viewport here.
+    -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css"/>
+
+    <title>Helder's Stock Predictor</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script>
+    <script src="https://code.iconify.design/2/2.1.1/iconify.min.js"></script>
+    
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/dashboard.css') }}">
+    <!--
+      NOTE: Credit to https://getbootstrap.com/docs/5.1/examples/dashboard/ and https://bbbootstrap.com/snippets/bootstrap-5-sidebar-menu-toggle-button-34132202
+      for providing a starting Bootstrap HTML layout with a starter HTML because it had the top header with a Search bar, and left menu navigation
+    -->
+  </head>
+
+  <!-- From https://www.daterangepicker.com/ -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+<script>
+  window.onload = function(){  
+    thispage = document.getElementById('navbar-recommend')
+    thispage.classList.add("active")
+    thispage.setAttribute("href", "#")
+  }
+
+  $(function() {
+    $('input[name="daterange"]').daterangepicker({
+      opens: 'left'
+    }, function(start, end, label) {
+      console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+    });
+  });
+  </script>
+
+    <body id="body-pd">
+        <header class="header" id="header">
+            <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
+        </header>
+
+        {% include 'navbar.html' %}
+
+      <!--Container Main start-->
+      <div class="height-100 bg-light">
+        <h4>Select a stock to get additional recommendations on</h4>
+        {% for table in tables %}
+          {{titles[loop.index]}}
+          {{table|safe}}
+        {% endfor %}
+      </div>
+
+      <!--Container Main end-->
+      <!-- Option 1: Bootstrap Bundle with Popper -->
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+      <script src="{{ url_for('static', filename='scripts/dashboard.js') }}"></script>
+    </body>
+</html>

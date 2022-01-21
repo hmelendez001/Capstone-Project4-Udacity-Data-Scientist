@@ -3,12 +3,12 @@
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- Bootstrap is developed mobile first, a strategy in which we optimize code for mobile devices first and then scale up components 
       as necessary using CSS media queries. To ensure proper rendering and touch zooming for all devices, add this responsive viewport here.
     -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT" crossorigin="anonymous"></script> 
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
@@ -17,7 +17,6 @@
 
     <title>Helder's Stock Predictor</title>
 
-    <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script>
     <script src="https://code.iconify.design/2/2.1.1/iconify.min.js"></script>
     
@@ -26,12 +25,26 @@
       NOTE: Credit to https://getbootstrap.com/docs/5.1/examples/dashboard/ and https://bbbootstrap.com/snippets/bootstrap-5-sidebar-menu-toggle-button-34132202
       for providing a starting Bootstrap HTML layout with a starter HTML because it had the top header with a Search bar, and left menu navigation
     -->
-  </head>    
+  </head>
+
+  <!-- From https://www.daterangepicker.com/ -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
     
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <!--
+    Credit to https://twitter.github.io/typeahead.js/ for their examples on https://twitter.github.io/typeahead.js/examples/ on creating the type ahead search ala twitter
+  -->
     <script type="text/javascript" src="https://twitter.github.io/typeahead.js/releases/latest/typeahead.bundle.js"></script>
     <script>
-    $(document).ready(function(){
+      window.onload = function(){  
+        thispage = document.getElementById('navbar-master')
+        thispage.classList.add("active")
+        thispage.setAttribute("href", "#")
+      }
+
+      $(document).ready(function(){
         // Defining the local dataset
         var mysymbols = {{symbols | safe}};
          
@@ -52,36 +65,118 @@
             name: 'symbols',
             source: symbols
         });
-    });  
+    });
+  </script>
+
+  <script>
+    function stockSelected(e) {
+      var stockNameSelected = document.getElementById("stockText");
+      stockNameSelected.classList.remove("is-invalid")
+      // Check valid stock selected
+      if (stockNameSelected.value.length == 0) {
+        stockNameSelected.classList.add("is-invalid")
+        showError("You must input a US Stock Ticker")
+        stockNameSelected.focus()
+        event.preventDefault(); // cancel default behavior
+        return false
+      }
+
+      var dateRange = document.getElementById("daterange");
+      dateRange.classList.remove("is-invalid")
+      // Check end date is not in the future
+      var today  = new Date();
+      var endDate = document.getElementById('daterange-end').innerHTML
+      var end = Date.parse(endDate)
+      if (end > today){
+        dateRange.classList.add("is-invalid")
+        showError("Date range cannot end in the future", "End date is " + endDate)
+        dateRange.focus()
+        event.preventDefault(); // cancel default behavior
+        return false
+      }
+      // Check date range is not more than one year
+      var startDate = document.getElementById('daterange-start').innerHTML
+      var start = Date.parse(startDate)
+      Difference_In_Time = end - start
+      var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24)
+      if (Difference_In_Days > 366){
+        dateRange.classList.add("is-invalid")
+        showError("Date range should not be more than one year", startDate + " through " + endDate + " is " + Difference_In_Days + " days apart.")
+        dateRange.focus()
+        event.preventDefault(); // cancel default behavior
+        return false
+      }
+
+      var toastTraining = document.getElementById('toast-training');
+
+      var toast = new bootstrap.Toast(toastTraining)
+      var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+      document.getElementById("toastTime").innerHTML = today.toLocaleDateString("en-US", options)
+      document.getElementById("toastMessage").innerHTML = "Training " + stockNameSelected.value + " date range: " + startDate + " to " + endDate;
+
+      toast.show();
+
+      return true
+    }
+  </script>
+
+<script>
+  $(function() {
+    $('input[name="daterange"]').daterangepicker({
+      opens: 'left',
+      locale: {
+        format: 'YYYY-MM-DD'
+      },
+      beforeShow: function(){    
+           $(".ui-datepicker").css('font-size', 8) 
+      }
+    }, function(start, end, label) {
+      document.getElementById('daterange-start').innerHTML = start.format('YYYY-MM-DD')
+      document.getElementById('daterange-end').innerHTML = end.format('YYYY-MM-DD')
+    });
+  });
+
+  function deleteThisStock(btn, idToDelete, symbolToDelete, nameToDelete){
+      var table = document.getElementById("symbol_table_id");
+      if (table.tBodies[0].rows.length == 1) {
+        showError("Cannot remove the last stock model, must have a minimum of one.", document.getElementById('modal-you-sure-display').innerHTML)
+        return
+      }
+      var row = btn.parentNode.parentNode;
+      document.getElementById('modal-you-sure-display').innerHTML = symbolToDelete + ': ' + nameToDelete + " (" + idToDelete + ")"
+      document.getElementById('modal-you-sure-symbol').innerHTML = symbolToDelete
+      document.getElementById('my-delete-id').value = idToDelete
+      var myModalEl = document.getElementById('modal-you-sure-delete')
+      var myhandler = function(event) {
+        if (document.getElementById('modal-you-sure-symbol').innerHTML.length > 0){
+          var form = document.getElementById("delete-form")
+          document.getElementById('modal-you-sure-symbol').innerHTML = ""
+          form.submit()
+        }
+      }
+      myModalEl.addEventListener('click', myhandler)
+      $('#modal-you-sure').modal('show')
+     }
   </script>
 
     <body id="body-pd">
-      <header class="header" id="header">
+      <form>
+        <header class="header" id="header">
           <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
-          <input class="typeahead form-control" type="text" placeholder="Search US Stock..." aria-label="Search">
-          <button type="button" data-bs-toggle="tooltip" data-bs-placement="right" title="Train this stock"><i class='bx bxs-graduation nav_icon'></i></button>
-      </header>
-      <div class="l-navbar" id="nav-bar">
-        <nav class="nav">
-          <div> <a href="#" class="nav_logo"> <i class='bx bx-home nav_logo-icon'></i> <span class="nav_logo-name">Stock Predictor</span> </a>
-            <div class="nav_list"> 
-              <a href="#" class="nav_link active" data-bs-toggle="tooltip" data-bs-placement="right" title="Train the model for your stock(s)"> <i class='bx bxs-graduation nav_icon'></i> <span class="nav_name">Train</span> </a> 
-              <a href="#" class="nav_link" data-bs-toggle="tooltip" data-bs-placement="right" title="Predict prices on the stock models trained"> <i class='bx bx-line-chart nav_icon'></i> <span class="nav_name">Predict</span> </a> 
-              <a href="#" class="nav_link" data-bs-toggle="tooltip" data-bs-placement="right" title="See other stock recommendations"> <i class='bx bx-like nav_icon'></i> <span class="nav_name">Recommendations</span> </a> 
-              <hr class="nav_logo"/>
-              <a href="https://github.com/hmelendez001" target="_blank" class="nav_link"> <i class='bx bxl-github nav_icon' data-bs-toggle="tooltip" data-bs-placement="right" title="See my GitHub page"></i> <span class="nav_name">GitHub</span> </a> 
-              <a href="https://linkedin.com/in/hmelende" target="_blank" class="nav_link"> <i class='bx bxl-linkedin nav_icon' data-bs-toggle="tooltip" data-bs-placement="right" title="See my LinkedIn page"></i> <span class="nav_name">LinkedIn</span> </a> 
-              <a href="https://twitter.com/@MelendezHelder" target="_blank" class="nav_link"> <i class='bx bxl-twitter nav_icon' data-bs-toggle="tooltip" data-bs-placement="right" title="See my Twitter page"></i> <span class="nav_name">Twitter</span> </a>
-              <a href="https://hmelendez001.github.io" target="_blank" class="nav_link"> <i class='bx bx-book nav_icon' data-bs-toggle="tooltip" data-bs-placement="right" title="See my Blog page"></i> <span class="nav_name">Blog</span> </a>
-            </div>
-          </div> <a href="https://udacity.com" target="_blank" class="nav_link"> <i class="iconify" data-icon="cib:udacity" data-bs-toggle="tooltip" data-bs-placement="right" title="Udacity program page"></i> <span class="nav_name">Udacity</span> </a>
-        </nav>
-      </div>
+          <p style="opacity: 0; font-size:0px" id="daterange-start">2021-01-01</p>
+          <p style="opacity: 0; font-size:0px" id="daterange-end">2021-12-31</p>
+          <input id="stockText" title="Find a stock to train for the given date range" name="stockText" onchange="stockSelected(event)" class="typeahead form-control" type="text" placeholder="Search US Stock..." aria-label="Search" />
+          <input id="daterange" type="text" class="daterange form-group col-md-2" name="daterange" value="2021-01-01 - 2021-12-31" />
+          <button type="submit" onclick="stockSelected(event)" data-bs-toggle="tooltip" data-bs-placement="right" title="Train selected stock" class="btn-success"><i class='bx bxs-graduation nav_icon'></i></button>
+        </header>
+      </form>
+
+      {% include 'navbar.html' %}
 
       <!--Container Main start-->
       <div class="height-100 bg-light">
-        <h4>Find a stock and train a model</h4>
-        <div class="row">
+        <h4>Find a stock and train a model for a date range</h4>
+        <div class="row shadow">
           {% for id in ids %}
             <div class="col">
               <div id="{{id}}"></div>
@@ -89,20 +184,104 @@
           {% endfor %}
         </div>
 
-        {% for table in tables %}
-          {{titles[loop.index]}}
-          {{table|safe}}
-        {% endfor %}
+        <div class="table-responsive shadow">
+            <table id="symbol_table_id" class="table table-striped table-hover table-sm">
+              <caption style="caption-side:top">Trained Stock Models {{ tables|length }}</caption>
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Symbol</th>
+                  <th scope="col">Name</th>
+                  <th style="text-align:right" scope="col">Closing Price</th>
+                  <th style="text-align:right" scope="col">Volume</th>
+                  <th style="text-align:right" scope="col">52-Week Low</th>
+                  <th style="text-align:right" scope="col">52-Week High</th>
+                  <th scope="col">Begin Train</th>
+                  <th scope="col">End Train</th>
+                  <th scope="col">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for row in tables %}
+                <tr
+                {% if request.args.get('stockText') == "{} | {}".format(row[1], row[2]) %}
+                class="table-success"
+                {% endif %}
+                >
+                  <td>{{row[0]}}</td>
+                  <td>{{row[1]}}</td>
+                  <td>{{row[2]}}</td>
+                  <td style="text-align:right">{{ "{:,.2f}".format(row[3]) }}</td>
+                  <td style="text-align:right">{{ "{:,.0f}".format(row[4]) }}</td>
+                  <td style="text-align:right">{{ "{:,.2f}".format(row[5]) }}</td>
+                  <td style="text-align:right">{{ "{:,.2f}".format(row[6]) }}</td>
+                  <td>{{row[7] | format_datetime}}</td>
+                  <td>{{row[8] | format_datetime}}</td>
+                  <td>
+                    <button class="btn btn-secondary" onclick="deleteThisStock(this, {{row[0]}}, '{{row[1]}}', '{{row[2]}}')" title="Remove {{row[1]}}"><i class='bx bx-trash nav_icon'></i></button>
+                  </td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+        </div>
+
+        <form id="delete-form">
+          <p style="opacity: 0;" >
+            <input type="hidden" name="stockIdToDelete" id="my-delete-id"></input>
+          </p>
+        </form>
+    
+        <!-- Are you sure modal popup -->
+        <div class="container d-flex justify-content-center">
+          <div id="modal-you-sure" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content border-0">
+                      <div class="modal-body p-0">
+                          <div class="card border-0 p-sm-3 p-2 justify-content-center">
+                              <div class="card-header pb-0 bg-white border-0 ">
+                                  <div class="row">
+                                      <div class="col ml-auto"><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="float: right;"> <span aria-hidden="true"></span> </button></div>
+                                  </div>
+                                  <p class="font-weight-bold mb-2">Are you sure you want to delete this symbol?</p>
+                                  <p class="text-muted " id="modal-you-sure-display"></p>
+                                  <!-- use this to save just the symbol we are removing -->
+                                  <p style="opacity: 0;" id="modal-you-sure-symbol"></p>
+                              </div>
+                              <div class="card-body px-sm-4 mb-2 pt-1 pb-0">
+                                  <div class="row justify-content-end no-gutters">
+                                      <div class="col-auto"><button type="button" class="btn btn-light text-muted" data-bs-dismiss="modal">Cancel</button></div>
+                                      <div class="col-auto"><button id="modal-you-sure-delete" type="button" class="btn btn-danger px-4" data-bs-dismiss="modal">Delete</button></div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+        </div>
+
+        {% include 'errormodal.html' %}
+     
       </div>
+
+      <!-- Toast to display training parameters -->
+      <div id="toast-training" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+          <i class='bx bxs-graduation nav_icon'></i>
+          <strong class="me-auto">Training...</strong>
+          <small id="toastTime">11 mins ago</small>
+          <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body" id="toastMessage">
+          Hello, world! This is a toast message.
+        </div>
+      </div>
+
       <!--Container Main end-->
       <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-    <script src="{{ url_for('static', filename='scripts/dashboard.js') }}"></script>
-  
-    <script>
-      feather.replace()
-    </script>
-  </body>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+      <script src="{{ url_for('static', filename='scripts/dashboard.js') }}"></script>
+    </body>
 
   <footer>
     <script type="text/javascript">
