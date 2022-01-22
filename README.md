@@ -72,11 +72,12 @@ The application will also show you some stock recommendations for other ticker o
 | app > static > scripts | Directory containing the common JavaScript code for the web application |
 | app > static > scripts > dashboard.js | The main JavaScript file for the web application |
 | app > templates | Directory with the HTML files for the web application |
-| app > templates > errormodal.html | Common HTML code to implement a Bootstrap Modal error popup for our web application |
 | app > templates > master.html | The main page or the landing of the web application |
+| app > templates > modal.html | Common HTML code to implement a Bootstrap Modal set of popups for our web application |
 | app > templates > navbar.html | The left navigation menu for all the pages of the web application |
 | app > templates > predict.html | The page used for predicting or forecasting stock prices on the web application |
 | app > templates > recommend.html | The page used for displaying stock recommendations on the web application |
+| app > templates > toast.html | Common HTML code to implement a Bootstrap Toast popup for our web application |
 | app > \_\_init__.py | This file allows the folder to be set up as a Python module |
 | app > run.py | The Flask Python code that runs the web application |
 | data | The directory contaning the raw data for this project |
