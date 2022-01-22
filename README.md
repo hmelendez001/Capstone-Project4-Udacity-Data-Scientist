@@ -39,7 +39,7 @@ From the dashboard landing page beginning typing the name of a stock ticker or n
 The application will also show you some stock recommendations for other ticker or symbols that are similar to the one you selected, using a Content Recommendation Engine.
 
 ---
-<img src='images/Project4CapstoneStockPredictorPredict.png'>
+<img src='images/Project4CapstoneStockPredictorRecommend.png'>
 ---
 
 # Libraries Used
