@@ -44,6 +44,16 @@
         thispage.setAttribute("href", "#")
       }
 
+      window.addEventListener("load", function(){ 
+        // Set up the are you sure modal
+        document.getElementById('modal-you-sure-question').innerHTML = "Are you sure you want to delete this symbol?"
+        areYouSureBtn = document.getElementById('modal-you-sure-button')
+        areYouSureBtn.classList.add("btn-danger")
+        areYouSureBtn.innerHTML = "Delete"
+
+        document.getElementById('toast-popup-title').innerHTML = "Training..."
+      });
+
       $(document).ready(function(){
         // Defining the local dataset
         var mysymbols = {{symbols | safe}};
@@ -107,14 +117,14 @@
         return false
       }
 
-      var toastTraining = document.getElementById('toast-training');
+      var toastWorking = document.getElementById('toast-popup');
 
-      var toast = new bootstrap.Toast(toastTraining)
+      var toast = new bootstrap.Toast(toastWorking)
       var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-      document.getElementById("toastTime").innerHTML = today.toLocaleDateString("en-US", options)
-      document.getElementById("toastMessage").innerHTML = "Training " + stockNameSelected.value + " date range: " + startDate + " to " + endDate;
+      document.getElementById("toast-popup-small-display").innerHTML = today.toLocaleDateString("en-US", options)
+      document.getElementById("toast-popup-message").innerHTML = "Training " + stockNameSelected.value + " from: " + startDate + " to " + endDate;
 
-      toast.show();
+      toast.show('show');
 
       return true
     }
@@ -146,7 +156,7 @@
       document.getElementById('modal-you-sure-display').innerHTML = symbolToDelete + ': ' + nameToDelete + " (" + idToDelete + ")"
       document.getElementById('modal-you-sure-symbol').innerHTML = symbolToDelete
       document.getElementById('my-delete-id').value = idToDelete
-      var myModalEl = document.getElementById('modal-you-sure-delete')
+      var myModalEl = document.getElementById('modal-you-sure-button')
       var myhandler = function(event) {
         if (document.getElementById('modal-you-sure-symbol').innerHTML.length > 0){
           var form = document.getElementById("delete-form")
@@ -159,14 +169,14 @@
      }
   </script>
 
-    <body id="body-pd">
+  <body id="body-pd">
       <form>
         <header class="header" id="header">
           <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
           <p style="opacity: 0; font-size:0px" id="daterange-start">2021-01-01</p>
           <p style="opacity: 0; font-size:0px" id="daterange-end">2021-12-31</p>
           <input id="stockText" title="Find a stock to train for the given date range" name="stockText" onchange="stockSelected(event)" class="typeahead form-control" type="text" placeholder="Search US Stock..." aria-label="Search" />
-          <input id="daterange" type="text" class="daterange form-group col-md-2" name="daterange" value="2021-01-01 - 2021-12-31" />
+          <input id="daterange" title="Select a historical date range to train" type="text" class="daterange form-group col-md-2" name="daterange" value="2021-01-01 - 2021-12-31"><i class='bx bx-calendar nav_icon'></i></input>
           <button type="submit" onclick="stockSelected(event)" data-bs-toggle="tooltip" data-bs-placement="right" title="Train selected stock" class="btn-success"><i class='bx bxs-graduation nav_icon'></i></button>
         </header>
       </form>
@@ -175,7 +185,7 @@
 
       <!--Container Main start-->
       <div class="height-100 bg-light">
-        <h4>Find a stock and train a model for a date range</h4>
+        <h4>Find a stock and train a model for a date range <i class='bx bxs-graduation btn-success'></i></h4>
         <div class="row shadow">
           {% for id in ids %}
             <div class="col">
@@ -186,7 +196,7 @@
 
         <div class="table-responsive shadow">
             <table id="symbol_table_id" class="table table-striped table-hover table-sm">
-              <caption style="caption-side:top">Trained Stock Models {{ tables|length }}</caption>
+              <caption style="caption-side:top">Trained Stock Models: {{ tables|length }}</caption>
               <thead>
                 <tr>
                   <th scope="col">#</th>
@@ -232,56 +242,17 @@
           </p>
         </form>
     
-        <!-- Are you sure modal popup -->
-        <div class="container d-flex justify-content-center">
-          <div id="modal-you-sure" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
-              <div class="modal-dialog modal-dialog-centered" role="document">
-                  <div class="modal-content border-0">
-                      <div class="modal-body p-0">
-                          <div class="card border-0 p-sm-3 p-2 justify-content-center">
-                              <div class="card-header pb-0 bg-white border-0 ">
-                                  <div class="row">
-                                      <div class="col ml-auto"><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="float: right;"> <span aria-hidden="true"></span> </button></div>
-                                  </div>
-                                  <p class="font-weight-bold mb-2">Are you sure you want to delete this symbol?</p>
-                                  <p class="text-muted " id="modal-you-sure-display"></p>
-                                  <!-- use this to save just the symbol we are removing -->
-                                  <p style="opacity: 0;" id="modal-you-sure-symbol"></p>
-                              </div>
-                              <div class="card-body px-sm-4 mb-2 pt-1 pb-0">
-                                  <div class="row justify-content-end no-gutters">
-                                      <div class="col-auto"><button type="button" class="btn btn-light text-muted" data-bs-dismiss="modal">Cancel</button></div>
-                                      <div class="col-auto"><button id="modal-you-sure-delete" type="button" class="btn btn-danger px-4" data-bs-dismiss="modal">Delete</button></div>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-        </div>
-
-        {% include 'errormodal.html' %}
+        {% include 'modal.html' %}
      
       </div>
-
-      <!-- Toast to display training parameters -->
-      <div id="toast-training" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-        <div class="toast-header">
-          <i class='bx bxs-graduation nav_icon'></i>
-          <strong class="me-auto">Training...</strong>
-          <small id="toastTime">11 mins ago</small>
-          <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-        </div>
-        <div class="toast-body" id="toastMessage">
-          Hello, world! This is a toast message.
-        </div>
-      </div>
-
       <!--Container Main end-->
+    
+      {% include 'toast.html' %}
+
       <!-- Option 1: Bootstrap Bundle with Popper -->
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
       <script src="{{ url_for('static', filename='scripts/dashboard.js') }}"></script>
-    </body>
+  </body>
 
   <footer>
     <script type="text/javascript">
