@@ -34,7 +34,7 @@ You should see something like this on a local browser:
 
 ---
 
-From the dashboard landing page beginning typing the name of a stock ticker or name, like GOOG or Google. You will see a drop-down as you type of possible matches. Select a Stock and select a date range for which you would like to train the stock predictor.
+From the dashboard landing page, beginn typing the name of a stock ticker or name, like GOOG or Google. You will see a drop-down as you type of possible matches. Select a Stock and select a date range for which you would like to train the stock predictor. These type ahead names are just a list of US listed names found at the time of this writing. You may type a ticker not found on the search as long as it is a valid US listed stock ticker found by the Yahoo! Finance API.
 
 <img src='images/Project4CapstoneStockPredictorTypeAheadSearch.png'>
 
