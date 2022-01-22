@@ -96,8 +96,8 @@ The application will also show you some stock recommendations for other ticker o
 | data > tesla_stock_2021.csv | The raw Equity price data from Yahoo! Finance for 2021 Tesla Motors |
 | data > texas_instruments_stock_2021.csv | The raw Equity price data from Yahoo! Finance for 2021 Texas Instruments |
 | images | Used to store some screenshot images for this file |
-| images > Project2DisasterDashboardBootstrap5.png | Screenshot of the web application landing page used below |
-| images > Project2DisasterResultBootstrap5.png | Screenshot of the web application results page used below |
+| images > Project4CapstoneStockPredictorMaster.png | Screenshot of the web application landing page used below |
+| images > Project4CapstoneStockPredictorRecommend.png | Screenshot of the web application recommendation results page used below |
 | LICENSE | The MIT License file |
 | Procfile | Instructs the runtime to use gunicorn to run our dashboard |
 | README.md | The file you are currently reading |
