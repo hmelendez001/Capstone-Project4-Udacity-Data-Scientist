@@ -115,17 +115,17 @@ def index():
     More on why Flask Session is not secure: https://blog.miguelgrinberg.com/post/how-secure-is-the-flask-user-session
     """    
     # create visuals
-    ##app.logger.debug("------------------dtypes: {}".format(myuniverse.dtypes))
-    # handle session state to get "myuniverse" of stocks
+    # handle session state to get "myuniverse" of stocks and "df" historical data
     if not session.get("myuniverse"):
         session["myuniverse"] = myuniverse.to_dict()
+    if not session.get("historical"):
+        session["historical"] = df.to_dict()
 
     # handle removing a name
     if ('stockIdToDelete' in request.args.keys()):
         stockIdToDelete = request.args['stockIdToDelete']
         deltable = pd.DataFrame(session["myuniverse"])
         if len(stockIdToDelete) > 0 and is_int(stockIdToDelete) and int(stockIdToDelete) in deltable.index:
-            ##app.logger.debug("------------------stockIdToDelete: {}".format(stockIdToDelete))
             deltable.drop(int(stockIdToDelete), inplace=True)
             session["myuniverse"] = deltable.to_dict()
 
@@ -139,27 +139,23 @@ def index():
             addtable = pd.DataFrame(session["myuniverse"])
             existing_df = addtable[addtable['symbol'] == tickerToAdd]
             if (existing_df.shape[0] == 0):
-                ##app.logger.debug("******************** tickerToAdd: {}, daterangeToAdd: {}".format(tickerToAdd, daterangeToAdd))
                 newStock = universe[universe['symbol'] == tickerToAdd]
                 # TODO: Handle when a ticker is given not in our universe
                 if (newStock.shape[0] > 0):
-                    ##app.logger.debug("+++++++++++++++++++ tickerToAdd: {}, newStock: {}".format(tickerToAdd, newStock.tail()))
-                    ##app.logger.debug("------------------addtable.tail(): {}".format(addtable.tail()))
                     start, end = parseDateRange(daterangeToAdd)
                     newStock.at[newStock.index.max(), 'begin_train'] = start
                     newStock.at[newStock.index.max(), 'end_train'] = end
-                    ##app.logger.debug("------------------newStock.tail(): {}".format(newStock.tail()))
                     addtable = addtable.append(newStock).sort_values(by=['symbol'])
                     session["myuniverse"] = addtable.to_dict()
-                    ##app.logger.debug("+++++++++++++++++++ myuniverse: {}, \n+++++++++++++++++inPlace {}".format(myuniverse.tail(), myuniverse.append(newStock, sort=True).tail()))
 
-    symbols = df['Symbol'].unique()
+    historical = pd.DataFrame(session["historical"])
+    symbols = historical['Symbol'].unique()
     figures = [
         {
             'data': [
                 Line(
-                    x=df[df['Symbol'] == symbol]['Date'],
-                    y=df[df['Symbol'] == symbol]['Adj Close'],
+                    x=historical[historical['Symbol'] == symbol]['Date'],
+                    y=historical[historical['Symbol'] == symbol]['Adj Close'],
                     name=symbol
                 ) for symbol in symbols
             ],
@@ -178,13 +174,9 @@ def index():
     
     # encode plotly figures in JSON
     ids = ["figure-{}".format(i) for i, _ in enumerate(figures)]
-    ##app.logger.debug("******************** Symbols: {}".format(symbols.tolist()))
     figuresJSON = json.dumps(figures, cls=plotly.utils.PlotlyJSONEncoder)
 
-    symbols = universe_list
-
     mytable = pd.DataFrame(session["myuniverse"])
-    ###app.logger.debug("******************** mytable1: {}".format(mytable.tail()))
 
     mytable['myindex'] = mytable.index
     html_table = mytable[['myindex', 'symbol', 'name', 'close_price', 'volume', 'fifty_two_week_low', 'fifty_two_week_high', 'begin_train', 'end_train']]
@@ -192,7 +184,7 @@ def index():
     ##app.logger.debug("******************** Symbols: {}".format(html_table.to_numpy().tolist()))
     
     # render web page with data
-    return render_template('master.html', ids=ids, figuresJSON=figuresJSON, symbols=json.dumps(symbols.tolist()), tables=html_table.to_numpy().tolist())
+    return render_template('master.html', ids=ids, figuresJSON=figuresJSON, symbols=json.dumps(universe_list.tolist()), tables=html_table.to_numpy().tolist())
 
 # web page that handles allowing predictions on existing stock models
 @app.route('/predict')
@@ -207,19 +199,25 @@ def predict():
     string
         Return the generated HTML for this page
     """    
-    # save user input in query
-    query = request.args.get('query', '') 
+    mytable = pd.DataFrame(session["myuniverse"])
 
-    # use model to predict classification for query
-    #classification_labels = model.predict([query])[0]
-    #classification_results = dict(zip(df.columns[4:], classification_labels))
+    mytable['myindex'] = mytable.index
+    html_table = mytable[['myindex', 'symbol', 'name', 'close_price', 'volume', 'fifty_two_week_low', 'fifty_two_week_high', 'eps', 'div_yield', 'tradingview_symbol', 'sector', 'begin_train', 'end_train']]
 
-    # This will render the go.html Please see that file. 
-    return render_template(
-        'predict.html',
-        query=query
-        , tables=[myuniverse.to_html(classes='table table-striped table-hover')], titles=myuniverse.columns.values
-    )
+    ##app.logger.debug("******************** Symbols: {}".format(html_table.to_numpy().tolist()))
+ 
+    # handle prediction prices for a given name
+    if ('stockIdToPredict' in request.args.keys() and 'dateRangeToPredict' in request.args.keys()):
+        stockIdToPredict = request.args['stockIdToPredict']
+        dateRangeToPredict = request.args['dateRangeToPredict']
+        if len(stockIdToPredict) > 0 and is_int(stockIdToPredict) and int(stockIdToPredict) in mytable.index:
+            existing_df = mytable.loc[int(stockIdToPredict)]
+            if (existing_df.shape[0] > 0):
+                start, end = parseDateRange(dateRangeToPredict)
+                app.logger.debug("PPPPPPPPPPPPPPPPPPP: id {} from {} to {}\n{}".format(stockIdToPredict, start, end, existing_df.tail()))
+                
+    # render web page with data
+    return render_template('predict.html', symbols=json.dumps(universe_list.tolist()), tables=html_table.to_numpy().tolist())
 
 # web page that handles showing additional recommendations based on existing stocks
 @app.route('/recommend')
@@ -234,19 +232,15 @@ def recommend():
     string
         Return the generated HTML for this page
     """    
-    # save user input in query
-    query = request.args.get('query', '') 
+    mytable = pd.DataFrame(session["myuniverse"])
 
-    # use model to predict classification for query
-    #classification_labels = model.predict([query])[0]
-    #classification_results = dict(zip(df.columns[4:], classification_labels))
+    mytable['myindex'] = mytable.index
+    html_table = mytable[['myindex', 'symbol', 'name', 'close_price', 'volume', 'fifty_two_week_low', 'fifty_two_week_high', 'eps', 'div_yield', 'tradingview_symbol', 'sector', 'industry']]
 
-    # This will render the go.html Please see that file. 
-    return render_template(
-        'recommend.html',
-        query=query
-        , tables=[myuniverse.to_html(classes='table table-striped table-hover')], titles=myuniverse.columns.values
-    )
+    ##app.logger.debug("******************** Symbols: {}".format(html_table.to_numpy().tolist()))
+    
+    # render web page with data
+    return render_template('recommend.html', tables=html_table.to_numpy().tolist())
 
 
 def main():
