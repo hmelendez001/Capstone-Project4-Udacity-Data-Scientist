@@ -228,7 +228,7 @@
                   <td>{{row[7] | format_datetime}}</td>
                   <td>{{row[8] | format_datetime}}</td>
                   <td>
-                    <button class="btn btn-secondary" onclick="deleteThisStock(this, {{row[0]}}, '{{row[1]}}', '{{row[2]}}')" title="Remove {{row[1]}}"><i class='bx bx-trash nav_icon'></i></button>
+                    <button class="bxtn btn-sm btn-secondary" onclick="deleteThisStock(this, {{row[0]}}, '{{row[1]}}', '{{row[2]}}')" title="Remove {{row[1]}}"><i class='bx bx-trash nav_icon'></i></button>
                   </td>
                 </tr>
                 {% endfor %}
