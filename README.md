@@ -21,25 +21,37 @@ As in my previous project, I have also documented the work in the blog below:
 #### My BLOG is HERE: https://hmelendez001.github.io/2022/01/26/Udacity-Data-Scientist-Nanodegree-Capstone.html
 
 # How to Run the Web Application
-From the app folder run the following python command:<p/>
+From the **app** folder run the following python command:<p/>
 ##### &nbsp;&nbsp;&nbsp;&nbsp; python run.py
----
-You should see something like this on a local browser
+
+You should see something like this on a local browser:
+
 <img src='images/Project4CapstoneStockPredictorMaster.png'>
+
+---
+
+#### Alternatively you can run my Heroku web installation here: https://helderstockpredictor.herokuapp.com/
+
+---
+
+From the dashboard landing page beginning typing the name of a stock ticker or name, like GOOG or Google. You will see a drop-down as you type of possible matches. Select a Stock and select a date range for which you would like to train the stock predictor.
+
+<img src='images/Project4CapstoneStockPredictorTypeAheadSearch.png'>
+
+Then you can run the predictor for any given date range beyond the last training date.
+
+<img src='images/Project4CapstoneStockPredictorPredict.png'>
+
+The application will also show you some stock recommendations for other ticker or symbols that are similar to the one you selected, using a Content Recommendation Engine.
+
+<img src='images/Project4CapstoneStockPredictorRecommend.png'>
+
+---
 
 # How to Clear the Session or "Start Over"
 The web application uses a Flask Session to persist updates made through the web application. If at any point you want to start over or reset this "cache" then simply remove the flask_session directory which gets created:<p/>
 ##### &nbsp;&nbsp;&nbsp;&nbsp; rmdir flask_session
 
----
-#### Alternatively you can run my Heroku web installation here: https://helderstockpredictor.herokuapp.com/
-
-From the dashboard landing page beginning typing the name of a stock ticker or name, like GOOGL or Google. You will see a drop-down as you type of possible matches. Select a Stock and select a date range for which you would like to train the stock predictor. Then you can run the predictor for any given date range beyond the last training date.
-
-The application will also show you some stock recommendations for other ticker or symbols that are similar to the one you selected, using a Content Recommendation Engine.
-
----
-<img src='images/Project4CapstoneStockPredictorRecommend.png'>
 ---
 
 # Libraries Used
@@ -96,8 +108,10 @@ The application will also show you some stock recommendations for other ticker o
 | data > tesla_stock_2021.csv | The raw Equity price data from Yahoo! Finance for 2021 Tesla Motors |
 | data > texas_instruments_stock_2021.csv | The raw Equity price data from Yahoo! Finance for 2021 Texas Instruments |
 | images | Used to store some screenshot images for this file |
-| images > Project4CapstoneStockPredictorMaster.png | Screenshot of the web application landing page used below |
-| images > Project4CapstoneStockPredictorRecommend.png | Screenshot of the web application recommendation results page used below |
+| images > Project4CapstoneStockPredictorMaster.png | Screenshot of the web application landing page used above |
+| images > Project4CapstoneStockPredictorPredict.png | Screenshot of the web application price prediction page used above |
+| images > Project4CapstoneStockPredictorRecommend.png | Screenshot of the web application recommendation results based on a selected stock used above |
+| images > Project4CapstoneStockPredictorTypeAheadSearch.png | Screenshot of the web application type ahead results search ala Twitter used above |
 | LICENSE | The MIT License file |
 | Procfile | Instructs the runtime to use gunicorn to run our dashboard |
 | README.md | The file you are currently reading |
