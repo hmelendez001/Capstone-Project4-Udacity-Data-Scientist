@@ -14,20 +14,80 @@ import joblib
 from sqlalchemy import create_engine
 import sys
 
+from StockDateValidator import StockDateValidator
+from StockHistory import StockHistory
+from StockPricePredictor import StockPricePredictor
+from StockModelLinear import StockModelLinear
+
 
 app = Flask(__name__)
 app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 
+# In order to minimize calls to the API we will cache or store calls per day per symbol, 
+# meaning we will only call the API once per day per stock symbol
+stock_hash = {}
 
-# load data
-engine = create_engine('sqlite:///../data/DatabaseCache.db')
+# In order for get_stock_predictions to use the model trained by get_stock_histories we will have to cache these 
+# trained models here per stock symbol. Since we need both the model itself plus the dates for which it was trained 
+# we will also create a class that encapsulates these concepts into one object that we cache by symbol.
+model_hash = {}
+
+# load data, not using SQL Lite at this time in favor of just using Session state, instead initializing data from a file
+# engine = create_engine('sqlite:///../data/DatabaseCache.db')
 #df = pd.read_sql_table('Messages', engine)
-df = pd.read_csv('../data/initial_stocks.csv')
+df = pd.read_csv('../data/initial_stocks.csv', parse_dates=['Date'])
+
+# For now the "known universe" of stocks are the listed US stocks from https://swingtradebot.com/ that we ared in from a file
+# at this time. In the future we would call an API like Yahoo! Finance for look ahead search
 universe = pd.read_csv('../data/all_stocks_swingtradebot_dot_com.csv', parse_dates=['begin_train', 'end_train'])
 universe_list = universe['symbol'] + " | " + universe['name']
-myuniverse = universe[universe['symbol'].isin(df['Symbol'].unique())]
+
+def initialize_stock_cache():
+    '''
+    INPUT:
+    None 
+    
+    OUTPUT:
+    symbols (list) - List of symbols in our initial data
+    from_date (datetime.date) - Starting date of data
+    to_date (datetime.date) - Ending date of data
+    
+    Description:
+    This function initializes stock_hash from our initial data so we can call StockHistory.getStockHistories for the initial symbols
+    '''
+    # Get today's date because we need to use this for our keys
+    today = datetime.datetime.today().strftime('%Y-%m-%d')
+
+    symbols = df['Symbol'].unique()
+
+    for symbol in symbols:
+        key = today + "|" + symbol
+        stock_hash[key] = df[df['Symbol'] == symbol]
+
+    return symbols, df.Date.min(), df.Date.max()
+
+def CreateStockModel(symbol: str, df_symbol: pd.DataFrame, newFromDate: datetime.date, newToDate: datetime.date):
+    '''
+    INPUT:
+    symbol (str) - The stock ticker to get historical data for
+    df_symbol (Pandas.DataFrame) - The underlying Pandas DataFrame of train and test data
+    newFromDate (datetime.date) - The starting date range to get data for 
+    newToDate (datetime.date) - The ending date range to get data for 
+    
+    OUTPUT:
+    model (StockModel) - The model of choice for our tests
+    
+    Description:
+    This function determines which child class StockModel to use for our predictions
+    '''
+    #TODO: add API call to get symbol *not* in universe
+    df_info = universe[universe['symbol'] == symbol]
+    idx = df_info.index.min()
+    df_info.at[idx, 'begin_train'] = newFromDate
+    df_info.at[idx, 'end_train'] = newToDate
+    return StockModelLinear(symbol, df_symbol, newFromDate, newToDate, df_info)
 
 @app.template_filter()
 def format_datetime(value, format='%Y-%m-%d'):
@@ -51,8 +111,13 @@ def format_datetime(value, format='%Y-%m-%d'):
     """
     if isinstance(value, datetime.date):
         return value.strftime(format)
-    else:
+    elif isinstance(value, np.datetime64):
+        ts = pd.to_datetime(str(value)) 
+        return ts.strftime(format)
+    elif isinstance(value, str):
         return datetime.datetime.strptime(value, "%m/%d/%Y").strftime(format)
+    else:
+        return str(value)
 
 def is_int(aString: str) -> bool:
     """
@@ -70,29 +135,6 @@ def is_int(aString: str) -> bool:
         return True
     except ValueError:
         return False
-
-def parseDateRange(aString: str):
-    """
-    Returns start and end dates for the given date range string
-    Parameters
-    ----------
-    aString (str) - a string date range like '2021-01-01 - 2021-12-31'
-    Returns
-    -------
-    start (np.datetime64) - starting date
-    end (np.datetime64) - ending date
-    """
-    separator = ' - '
-    x = aString.find(separator)
-    startStr = aString[0:x].rstrip()
-    endStr = aString[x+len(separator):].rstrip()
-
-    ##start = np.datetime64(datetime.datetime.strptime(startStr, "%Y-%m-%d"))
-    ##end = np.datetime64(datetime.datetime.strptime(endStr, "%Y-%m-%d"))
-    start = np.datetime64(startStr, 'D')
-    end = np.datetime64(endStr, 'D')
-
-    return start, end
 
 # index webpage displays cool visuals and receives user input text for model
 @app.route('/')
@@ -115,47 +157,64 @@ def index():
     More on why Flask Session is not secure: https://blog.miguelgrinberg.com/post/how-secure-is-the-flask-user-session
     """    
     # create visuals
-    # handle session state to get "myuniverse" of stocks and "df" historical data
-    if not session.get("myuniverse"):
-        session["myuniverse"] = myuniverse.to_dict()
-    if not session.get("historical"):
-        session["historical"] = df.to_dict()
+    # handle session state to get "stock_hash" (historical data) and "model_hash" (trained cached model data)
+    if not session.get("stock_hash"):
+        session["stock_hash"] = stock_hash
+    if not session.get("model_hash"):
+        session["model_hash"] = model_hash
 
+    error_msg = ''
+    # Very first time we need to initialize the stock_hash and model_hash
+    MyStockHash = session["stock_hash"]
+    if len(MyStockHash) == 0:
+        symbols, from_date, to_date = initialize_stock_cache()
+        hist = StockHistory(stock_hash, model_hash)
+        error_msg, bool_ret, MyModelHash = hist.getStockHistories(symbols, from_date, to_date, CreateStockModel)
+        MyStockHash = stock_hash
+        session["stock_hash"] = stock_hash
+        session["model_hash"] = MyModelHash
+
+    MyModelHash = session["model_hash"]
+    hist = StockHistory(MyStockHash, MyModelHash)
     # handle removing a name
-    if ('stockIdToDelete' in request.args.keys()):
-        stockIdToDelete = request.args['stockIdToDelete']
-        deltable = pd.DataFrame(session["myuniverse"])
-        if len(stockIdToDelete) > 0 and is_int(stockIdToDelete) and int(stockIdToDelete) in deltable.index:
-            deltable.drop(int(stockIdToDelete), inplace=True)
-            session["myuniverse"] = deltable.to_dict()
+    if ('stockSymbolToDelete' in request.args.keys()):
+        stockSymbolToDelete = request.args['stockSymbolToDelete']
+        if len(stockSymbolToDelete) > 0 and stockSymbolToDelete in MyModelHash.keys():
+            ##app.logger.debug("******************** DELETE symbols: {}".format(stockSymbolToDelete))
+            MyModelHash = hist.dropModelFromCache(stockSymbolToDelete)
+            app.logger.debug("++++++++++++++ DELETE {} remaining Symbols: {}".format(stockSymbolToDelete, list(MyModelHash.keys())))
+            session["model_hash"] = MyModelHash
 
     # handle adding a new name
     if ('stockText' in request.args.keys() and 'daterange' in request.args.keys()):
         stockToAdd = request.args['stockText']
         daterangeToAdd = request.args['daterange']
-        if len(stockToAdd) > 0 and len(daterangeToAdd) > 0 and stockToAdd.find('|') > 1:
-            x = stockToAdd.find('|')
-            tickerToAdd = stockToAdd[0:x-1].rstrip()
-            addtable = pd.DataFrame(session["myuniverse"])
-            existing_df = addtable[addtable['symbol'] == tickerToAdd]
-            if (existing_df.shape[0] == 0):
-                newStock = universe[universe['symbol'] == tickerToAdd]
-                # TODO: Handle when a ticker is given not in our universe
-                if (newStock.shape[0] > 0):
-                    start, end = parseDateRange(daterangeToAdd)
-                    newStock.at[newStock.index.max(), 'begin_train'] = start
-                    newStock.at[newStock.index.max(), 'end_train'] = end
-                    addtable = addtable.append(newStock).sort_values(by=['symbol'])
-                    session["myuniverse"] = addtable.to_dict()
+        if len(stockToAdd) > 0 and len(daterangeToAdd) > 0:
+            if stockToAdd.find('|') > 1:
+                x = stockToAdd.find('|')
+                tickerToAdd = stockToAdd[0:x-1].rstrip()
+            else:
+                tickerToAdd = stockToAdd
+            start, end = StockDateValidator.parseDateRange(daterangeToAdd)
+            df_universe = universe[universe['symbol'] == tickerToAdd]
+            app.logger.debug("++++++++++++++ ADDING Symbols: {}\n{}".format(tickerToAdd, df_universe.tail()))
+            if df_universe.shape[0] == 0:
+                error_msg = "Stock ticker '" + tickerToAdd + "' not a valid US listed ticker."
+            else:
+                error_msg, bool_ret, MyModelHash = hist.getStockHistories([tickerToAdd], start, end, CreateStockModel)
+                if not bool_ret:
+                    error_msg = "Stock " + tickerToAdd + ": " + error_msg
+                    app.logger.error("++++++++++++++ getStockHistories: {}: {}".format(bool_ret, error_msg))
+                ##app.logger.debug("++++++++++++++ ADDED Symbols: {}".format(list(MyModelHash.keys())))
+                session["model_hash"] = MyModelHash
 
-    historical = pd.DataFrame(session["historical"])
-    symbols = historical['Symbol'].unique()
+    symbols = list(MyModelHash.keys())
     figures = [
         {
             'data': [
                 Line(
-                    x=historical[historical['Symbol'] == symbol]['Date'],
-                    y=historical[historical['Symbol'] == symbol]['Adj Close'],
+                    x=MyModelHash[symbol].df['Date'],
+                    y=MyModelHash[symbol].df['Adj Close'],
                     name=symbol
                 ) for symbol in symbols
             ],
@@ -176,7 +235,10 @@ def index():
     ids = ["figure-{}".format(i) for i, _ in enumerate(figures)]
     figuresJSON = json.dumps(figures, cls=plotly.utils.PlotlyJSONEncoder)
 
-    mytable = pd.DataFrame(session["myuniverse"])
+    mytable = pd.DataFrame()
+    for symbol in symbols:
+        mytable = mytable.append(MyModelHash[symbol].df_info)
+    mytable.sort_values(by=['symbol'], inplace=True)
 
     mytable['myindex'] = mytable.index
     html_table = mytable[['myindex', 'symbol', 'name', 'close_price', 'volume', 'fifty_two_week_low', 'fifty_two_week_high', 'begin_train', 'end_train']]
@@ -184,7 +246,7 @@ def index():
     ##app.logger.debug("******************** Symbols: {}".format(html_table.to_numpy().tolist()))
     
     # render web page with data
-    return render_template('master.html', ids=ids, figuresJSON=figuresJSON, symbols=json.dumps(universe_list.tolist()), tables=html_table.to_numpy().tolist())
+    return render_template('master.html', ids=ids, figuresJSON=figuresJSON, symbols=json.dumps(universe_list.tolist()), tables=html_table.to_numpy().tolist(), error_msg = error_msg)
 
 # web page that handles allowing predictions on existing stock models
 @app.route('/predict')
@@ -198,26 +260,73 @@ def predict():
     -------
     string
         Return the generated HTML for this page
-    """    
-    mytable = pd.DataFrame(session["myuniverse"])
+    """
+    MyModelHash = session["model_hash"]
+    mytable = pd.DataFrame()
+    for symbol in MyModelHash.keys():
+        mytable = mytable.append(MyModelHash[symbol].df_info)
+    mytable.sort_values(by=['symbol'], inplace=True)
 
     mytable['myindex'] = mytable.index
-    html_table = mytable[['myindex', 'symbol', 'name', 'close_price', 'volume', 'fifty_two_week_low', 'fifty_two_week_high', 'eps', 'div_yield', 'tradingview_symbol', 'sector', 'begin_train', 'end_train']]
+    html_table = mytable[['myindex', 'symbol', 'name', 'close_price', 'volume', 'fifty_two_week_low', 'fifty_two_week_high', 'eps', 'div_yield', 'sector', 'begin_train', 'end_train']]
 
-    ##app.logger.debug("******************** Symbols: {}".format(html_table.to_numpy().tolist()))
- 
     # handle prediction prices for a given name
-    if ('stockIdToPredict' in request.args.keys() and 'dateRangeToPredict' in request.args.keys()):
-        stockIdToPredict = request.args['stockIdToPredict']
+    error_msg = ''
+    ids = []
+    figures = []
+    evals = {}
+    if ('stockSymbolToPredict' in request.args.keys() and 'dateRangeToPredict' in request.args.keys()):
+        stockSymbolToPredict = request.args['stockSymbolToPredict']
         dateRangeToPredict = request.args['dateRangeToPredict']
-        if len(stockIdToPredict) > 0 and is_int(stockIdToPredict) and int(stockIdToPredict) in mytable.index:
-            existing_df = mytable.loc[int(stockIdToPredict)]
-            if (existing_df.shape[0] > 0):
-                start, end = parseDateRange(dateRangeToPredict)
-                app.logger.debug("PPPPPPPPPPPPPPPPPPP: id {} from {} to {}\n{}".format(stockIdToPredict, start, end, existing_df.tail()))
+        if len(stockSymbolToPredict) > 0 and stockSymbolToPredict in MyModelHash.keys():
+            start, end = StockDateValidator.parseDateRange(dateRangeToPredict)
+            predict = StockPricePredictor(MyModelHash)
+            error_msg, df_ret = predict.getStockPredictions([stockSymbolToPredict], start, end)
+            if (len(error_msg) > 0):
+                app.logger.error("********************: symbol {} from {} to {}: {}".format(stockSymbolToPredict, start, end, error_msg))
+            else:
+                ##app.logger.debug("********************: symbol {} from {} to {}:\n{}".format(stockSymbolToPredict, start, end, df_ret.tail()))
+                symbol = stockSymbolToPredict
+                evals, actuals, predicted = MyModelHash[symbol].evaluateModel()
+                graph_title = symbol + ": " + MyModelHash[symbol].df_info.at[MyModelHash[symbol].df_info.index.max(), 'name'] + ' Prices'
+                figures = [
+                    {
+                        'data': [
+                            Line(
+                                x=MyModelHash[symbol].df['Date'],
+                                y=MyModelHash[symbol].df['Adj Close'],
+                                name="Historical " + symbol
+                            ),
+                            Line(
+                                x=df_ret['Date'],
+                                y=df_ret['Adj Close'],
+                                name="Predicted " + symbol
+                            ),
+                            Line(
+                                x=MyModelHash[symbol].df[MyModelHash[symbol].df['Date'] > MyModelHash[symbol].last_trained_date]['Date'],
+                                y=predicted,
+                                name="Tested " + symbol
+                            )
+                        ],
+
+                        'layout': {
+                            'title': graph_title,
+                            'yaxis': {
+                                'title': "Price"
+                            },
+                            'xaxis': {
+                                'title': "Date"
+                            },
+                        },
+                    },
+                ]
+     
+    # encode plotly figures in JSON
+    ids = ["figure-{}".format(i) for i, _ in enumerate(figures)]
+    figuresJSON = json.dumps(figures, cls=plotly.utils.PlotlyJSONEncoder)   
                 
     # render web page with data
-    return render_template('predict.html', symbols=json.dumps(universe_list.tolist()), tables=html_table.to_numpy().tolist())
+    return render_template('predict.html', ids=ids, figuresJSON=figuresJSON, symbols=json.dumps(universe_list.tolist()), tables=html_table.to_numpy().tolist(), evals=evals, error_msg = error_msg)
 
 # web page that handles showing additional recommendations based on existing stocks
 @app.route('/recommend')
@@ -231,16 +340,33 @@ def recommend():
     -------
     string
         Return the generated HTML for this page
-    """    
-    mytable = pd.DataFrame(session["myuniverse"])
+    """
+    MyModelHash = session["model_hash"]
+    mytable = pd.DataFrame()
+    for symbol in MyModelHash.keys():
+        mytable = mytable.append(MyModelHash[symbol].df_info)
+    mytable.sort_values(by=['symbol'], inplace=True)
 
     mytable['myindex'] = mytable.index
-    html_table = mytable[['myindex', 'symbol', 'name', 'close_price', 'volume', 'fifty_two_week_low', 'fifty_two_week_high', 'eps', 'div_yield', 'tradingview_symbol', 'sector', 'industry']]
+    html_table = mytable[['myindex', 'symbol', 'name', 'close_price', 'volume', 'fifty_two_week_low', 'fifty_two_week_high', 'eps', 'div_yield', 'sector', 'industry']]
+
+    #TODO: For now hardcoding recommendations while I work on this page
+    sames_table = ['AMD', 'NVDA', 'FB', 'APPS', 'MSFT', 'ATVI', 'AEY', 'SQ', 'BB', 'AMAT']
+    sames_table = universe[universe['symbol'].isin(sames_table)]
+    #sames_table.sort_values(by=['symbol'], inplace=True)
+    sames_table['myindex'] = sames_table.index
+    sames_table = sames_table[html_table.columns.tolist()]
+
+    serendipity_table = ['JPM', 'NKE', 'BBIO', 'CCL', 'AMC', 'AVCT', 'BAC', 'AAL', 'BBD', 'MUSA']
+    serendipity_table = universe[universe['symbol'].isin(serendipity_table)]
+    #serendipity_table.sort_values(by=['symbol'], inplace=True)
+    serendipity_table['myindex'] = serendipity_table.index
+    serendipity_table = serendipity_table[html_table.columns.tolist()]
 
     ##app.logger.debug("******************** Symbols: {}".format(html_table.to_numpy().tolist()))
     
     # render web page with data
-    return render_template('recommend.html', tables=html_table.to_numpy().tolist())
+    return render_template('recommend.html', tables=html_table.to_numpy().tolist(), sames=sames_table.to_numpy().tolist(), serendipity=serendipity_table.to_numpy().tolist())
 
 
 def main():
