@@ -42,6 +42,10 @@ Then you can run the predictor for any given date range beyond the last training
 
 <img src='images/Project4CapstoneStockPredictorPredict.png'>
 
+If you hover over any of the Model Accuracy score values at the bottom you will see a Tool Tip explaining what the value means, e.g. RMSE is Root Mean Squared Error.
+
+<img src='images/Project4CapstoneStockPredictorPredictAccuracy.png'>
+
 The application will also show you some stock recommendations for other ticker or symbols that are similar to the one you selected, using a Content Recommendation Engine.
 
 <img src='images/Project4CapstoneStockPredictorRecommend.png'>
