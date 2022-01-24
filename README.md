@@ -92,6 +92,11 @@ The web application uses a Flask Session to persist updates made through the web
 | app > templates > toast.html | Common HTML code to implement a Bootstrap Toast popup for our web application |
 | app > \_\_init__.py | This file allows the folder to be set up as a Python module |
 | app > run.py | The Flask Python code that runs the web application |
+| app > StockDateValidator.py | The Python code that does the date validation for the Machine Learning model inputs |
+| app > StockHistory.py | The Python code that caches and/or retrieves the historical stock data rom the Yahoo! Finance API as input to the Machine Learning model |
+| app > StockModel.py | The Python abstract class to make the Machine Learning model pluggable or allow for a different model in the future with minimal code changes |
+| app > StockModelLinear.py | The StockModel Linear Regression child model used for Machine Learning |
+| app > StockPricePredictor.py | The Python class that encapsulates the validation and call to get price predictions from the Machine Learning model |
 | data | The directory contaning the raw data for this project |
 | data > All_Data_Nasdaq.csv | The raw data NASDAQ Equity stock data |
 | data > DatabaseCache.db | The SQL Lite connection file for caching daily API calls |
@@ -165,5 +170,5 @@ We explored the Yahoo! Finance historical trading data including using the Yahoo
 This was a very fun project for me. Being able to choose a subject matter that I both find interesting and familiar, yet looking at it with a Data Science lens, made this work fascinating to me. It was a great opportunity to apply everything I learned and showcase how it could be applied to a real world problem and one that is close to home. The hardest part was to stop adding extra work. I probably could have kept working on this, thinking of new ways to model and test this. By far the best project in the Udacity program.
 
 # Acknowledgements
-Several code snippets came from previous lessons in our Udacity Data Scientist program. Also, where employed I have credited various contributors from StackOverflow.com, geeksforgeeks.org at https://www.geeksforgeeks.org/, https://www.tutorialspoint.com/ for sample plotly graphs, and the Data Science Stack Exchange at https://datascience.stackexchange.com. A big thank you to our instructors and all those involved in the Udacity program.
+Several code snippets came from previous lessons in our Udacity Data Scientist program. Also, where I have used others' code I have credited various contributors from StackOverflow.com, geeksforgeeks.org at https://www.geeksforgeeks.org/, https://www.tutorialspoint.com/ for sample plotly graphs, and the Data Science Stack Exchange at https://datascience.stackexchange.com. A big thank you to our instructors and all those involved in the Udacity program.
 
