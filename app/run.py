@@ -4,6 +4,7 @@ import re
 import numpy as np
 import pandas as pd
 import logging
+import os.path
 import datetime
 
 from flask import Flask
@@ -37,11 +38,15 @@ model_hash = {}
 # load data, not using SQL Lite at this time in favor of just using Session state, instead initializing data from a file
 # engine = create_engine('sqlite:///../data/DatabaseCache.db')
 #df = pd.read_sql_table('Messages', engine)
-df = pd.read_csv('../data/initial_stocks.csv', parse_dates=['Date'])
+# Relative paths do not work so great with Heroku
+d = os.path.dirname(os.path.abspath(__file__))
+datapath = os.path.join(d, '..')
+datapath = os.path.join(datapath, 'data')
+df = pd.read_csv(os.path.join(datapath, 'initial_stocks.csv'), parse_dates=['Date'])
 
 # For now the "known universe" of stocks are the listed US stocks from https://swingtradebot.com/ that we ared in from a file
 # at this time. In the future we would call an API like Yahoo! Finance for look ahead search
-universe = pd.read_csv('../data/all_stocks_swingtradebot_dot_com.csv', parse_dates=['begin_train', 'end_train'])
+universe = pd.read_csv(os.path.join(datapath, 'all_stocks_swingtradebot_dot_com.csv'), parse_dates=['begin_train', 'end_train'])
 universe_list = universe['symbol'] + " | " + universe['name']
 
 def initialize_stock_cache():
