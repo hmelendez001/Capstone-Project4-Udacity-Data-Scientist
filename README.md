@@ -131,9 +131,9 @@ The web application uses a Flask Session to persist updates made through the web
 # How to Deploy to the Heroku Hosting Platform
 | Step | Command | Description |
 | :--- | :--- | :--- |
-| 1 | mkdir web_app | Create a folder to contain all the assets to deploy |
-| 2 | cp -R app/* web_app | Copy all the files in this project to the web_app folder you created in step 1 |
-| 3 | heroku --version | Verify the Heroku installation, if you get a not found error the you need to install heroku with: npm install -g heroku | 
+| 1 | mkdir web_app | Create a folder to contain all the assets to deploy at the root level |
+| 2 | cp -R app/* web_app | Recursively copy all the files in folders app/, data/, and files Procfile and requirements to the web_app folder you created in step 1 |
+| 3 | heroku --version | Verify the Heroku installation, if you get a not found error then you need to install heroku with: npm install -g heroku. If you do not have npm then just install Node.js from the LTS https://nodejs.org/en/download/ | 
 | 4 | curl https://cli-assets.heroku.com/install-ubuntu.sh \| sh | Install the necessary Heroku assets using their installation script | 
 | 5 | heroku login -i | Assuming you have a Heroku account already, if not go to heroku.com and set up your account then issue this command to login with your credentials. If you get a message like you are logged in but it hangs and you get no command prompt on Windows then you need to do this from a Windows CMD prompt |
 | 6 | git init<p/>git config --global user.email "you@example.com"<p/>git config --global user.name "Your Name" | Initialize a git repository with these ONE-TIME commands, if you do not already have one in Heroku |
