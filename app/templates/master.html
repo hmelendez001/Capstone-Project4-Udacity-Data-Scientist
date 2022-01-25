@@ -155,7 +155,7 @@
       var row = btn.parentNode.parentNode;
       document.getElementById('modal-you-sure-display').innerHTML = symbolToDelete + ': ' + nameToDelete + " (" + idToDelete + ")"
       document.getElementById('modal-you-sure-symbol').innerHTML = symbolToDelete
-      document.getElementById('my-delete-id').value = idToDelete
+      document.getElementById('my-delete-symbol').value = symbolToDelete
       var myModalEl = document.getElementById('modal-you-sure-button')
       var myhandler = function(event) {
         if (document.getElementById('modal-you-sure-symbol').innerHTML.length > 0){
@@ -173,10 +173,10 @@
       <form>
         <header class="header" id="header">
           <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
-          <p style="opacity: 0; font-size:0px" id="daterange-start">2021-01-01</p>
+          <p style="opacity: 0; font-size:0px" id="daterange-start">2021-01-04</p>
           <p style="opacity: 0; font-size:0px" id="daterange-end">2021-12-31</p>
           <input id="stockText" title="Find a stock to train for the given date range" name="stockText" onchange="stockSelected(event)" class="typeahead form-control" type="text" placeholder="Search US Stock..." aria-label="Search" />
-          <input id="daterange" title="Select a historical date range to train" type="text" class="daterange form-group col-md-2" name="daterange" value="2021-01-01 - 2021-12-31"><i class='bx bx-calendar nav_icon'></i></input>
+          <input id="daterange" title="Select a historical date range to train" type="text" class="daterange form-group col-md-2" name="daterange" value="2021-01-04 - 2021-12-31"><i class='bx bx-calendar nav_icon'></i></input>
           <button type="submit" onclick="stockSelected(event)" data-bs-toggle="tooltip" data-bs-placement="right" title="Train selected stock" class="btn-success"><i class='bx bxs-graduation nav_icon'></i></button>
         </header>
       </form>
@@ -200,6 +200,7 @@
               <thead>
                 <tr>
                   <th scope="col">#</th>
+                  <!--th scope="col"> </th-->
                   <th scope="col">Symbol</th>
                   <th scope="col">Name</th>
                   <th style="text-align:right" scope="col">Closing Price</th>
@@ -218,7 +219,8 @@
                 class="table-success"
                 {% endif %}
                 >
-                  <td>{{row[0]}}</td>
+                  <td>{{row[0]}}</td> <!-- logos from kaggle.com US Stocks & ETFs - Tickers, Company Info, Logos at https://www.kaggle.com/marketahead/all-us-stocks-tickers-company-info-logos -->
+                  <!--td><img style="vertical-align: bottom;" width="15%" height="15%" src="{{ '{}/{}.png'.format(url_for('static', filename='logos'), row[1]) }}" /></td-->
                   <td>{{row[1]}}</td>
                   <td>{{row[2]}}</td>
                   <td style="text-align:right">{{ "{:,.2f}".format(row[3]) }}</td>
@@ -238,9 +240,24 @@
 
         <form id="delete-form">
           <p style="opacity: 0;" >
-            <input type="hidden" name="stockIdToDelete" id="my-delete-id"></input>
+            <input type="hidden" name="stockSymbolToDelete" id="my-delete-symbol"></input>
           </p>
         </form>
+        
+        <div 
+        {% if error_msg | length > 0 %}
+        class="alert alert-danger"
+        {% else %}
+        class="alert"
+        {% endif %}
+        role="alert">
+          <h4 class="alert-heading alert-danger">
+            {% if error_msg | length > 0 %}
+            Error: Unable to Get Stock History
+            {% endif %}
+          </h4>
+          <p>{{error_msg | safe}}</p>
+        </div>
     
         {% include 'modal.html' %}
      

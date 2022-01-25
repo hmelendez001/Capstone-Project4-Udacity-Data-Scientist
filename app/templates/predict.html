@@ -49,6 +49,12 @@
     });
 
     $(function() {
+      //$('[data-toggle="tooltip"]').tooltip({
+      $("body").tooltip({
+        selector: '[data-toggle="tooltip"]',
+            container: 'body'
+      });
+
       $('input[name="daterange"]').daterangepicker({
         opens: 'left',
         locale: {
@@ -57,14 +63,19 @@
       }, function(start, end, label) {
         document.getElementById('daterange-predict').value = start.format('YYYY-MM-DD') + " - " + end.format('YYYY-MM-DD')
       });
+      $('thead tr th').click(function(e) {
+        //window.location.href = 'https://www.google.com';
+        var target = $(event.target);
+        showError(target.text(), e.target.getAttribute("data-bs-original-title"))
+      });
     });
 
     function predictThisStock(btn, idToPredict, symbolToPredict, nameToPredict){
       var row = btn.parentNode.parentNode;
       var dateRangeString = document.getElementById('daterange-predict').value
-      document.getElementById('modal-you-sure-display').innerHTML = symbolToPredict + ': ' + nameToPredict + " (" + idToPredict + ") from " + dateRangeString
+      document.getElementById('modal-you-sure-display').innerHTML = symbolToPredict + ': ' + nameToPredict + " from " + dateRangeString
       document.getElementById('modal-you-sure-symbol').innerHTML = symbolToPredict
-      document.getElementById('my-predict-id').value = idToPredict
+      document.getElementById('my-predict-symbol').value = symbolToPredict
       var myModalEl = document.getElementById('modal-you-sure-button')
       var myhandler = function(event) {
         if (document.getElementById('modal-you-sure-symbol').innerHTML.length > 0){
@@ -102,7 +113,7 @@
     <div class="height-100 bg-light">
         <h4>Select a date range and click predict to get future prices <i class='bx btn-success bx-line-chart nav_icon'></i></h4>
         <div>
-            <input type="text" title="Select a date range to predict prices for" class="daterange form-group col-md-2" name="daterange" value="2022-01-01 - 2022-01-08"><i class='bx bx-calendar nav_icon'></i></input>
+            <input type="text" title="Select a date range to predict prices for" class="daterange form-group col-md-2" name="daterange" value="2022-01-14 - 2022-01-21"><i class='bx bx-calendar nav_icon'></i></input>
         </div>
         
         <div class="table-responsive shadow">
@@ -119,7 +130,6 @@
                 <th style="text-align:right" scope="col">52-Week High</th>
                 <th style="text-align:right" scope="col">Earnings/Share</th>
                 <th style="text-align:right" scope="col">Dividend Yield</th>
-                <th scope="col">Trades As</th>
                 <th scope="col">Sector</th>
                 <th scope="col">Begin Train</th>
                 <th scope="col">End Train</th>
@@ -129,7 +139,7 @@
             <tbody>
               {% for row in tables %}
               <tr
-              {% if request.args.get('stockIdToPredict') == "{}".format(row[0]) %}
+              {% if request.args.get('stockSymbolToPredict') == "{}".format(row[1]) %}
               class="table-success"
               {% endif %}
               >
@@ -143,9 +153,8 @@
                 <td style="text-align:right">{{ "{:,.2f}".format(row[7]) }}</td>
                 <td style="text-align:right">{{ "{:,.2f}".format(row[8]) }}</td>
                 <td>{{row[9]}}</td>
-                <td>{{row[10]}}</td>
+                <td>{{row[10] | format_datetime}}</td>
                 <td>{{row[11] | format_datetime}}</td>
-                <td>{{row[12] | format_datetime}}</td>
                 <td>
                   <button class="btn btn-sm btn-success" onclick="predictThisStock(this, {{row[0]}}, '{{row[1]}}', '{{row[2]}}')" title="Predict {{row[1]}}"><i class='bx bx-line-chart nav_icon'></i></button>
                 </td>
@@ -155,13 +164,54 @@
           </table>
         </div>
 
+        <div class="row shadow">
+          {% for id in ids %}
+            <div class="col">
+              <div id="{{id}}"></div>
+            </div>
+          {% endfor %}
+        </div>
+        
+        {% if request.args.get('stockSymbolToPredict') is not none %}
+        <div class="table-responsive shadow">
+          <table id="scores_table_id" class="table table-striped table-hover table-sm">
+            <caption style="caption-side:top">Model Accuracy</caption>
+            <thead>
+              <tr>
+                {% for key, value in evals.items() %}
+                {% set tokens = key.split('|') %}
+                <th style="text-align:right" scope="col">{{tokens[0]}}</th>
+                {% endfor %}
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                {% for key, value in evals.items() %}
+                {% set tokens = key.split('|') %}
+                <td style="text-align:right" data-toggle="tooltip" title="{{tokens[1]}}">{{ "{:,.2f}".format(value) }}</td>
+                {% endfor %}
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        {% endif %}
+
         <form id="predict-form">
           <p style="opacity: 0;" >
-            <input type="hidden" name="stockIdToPredict" id="my-predict-id"></input>
-            <input type="hidden" name="dateRangeToPredict" id="daterange-predict" value="2022-01-01 - 2022-01-08"></input>
+            <input type="hidden" name="stockSymbolToPredict" id="my-predict-symbol"></input>
+            <input type="hidden" name="dateRangeToPredict" id="daterange-predict" value="2022-01-14 - 2022-01-21"></input>
           </p>
-        </form>
-    
+        </form
+        
+        <div class="alert alert-danger" role="alert">
+          <h4 class="alert-heading alert-danger">
+            {% if error_msg | length > 0 %}
+            Error: Unable to Predict Prices
+            {% endif %}
+          </h4>
+          <p>{{error_msg | safe}}</p>
+        </div>
+   
         {% include 'modal.html' %}
 
     </div>
@@ -173,4 +223,18 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script src="{{ url_for('static', filename='scripts/dashboard.js') }}"></script>
   </body>
+
+  <footer>
+    <script type="text/javascript">
+        // plots the figure with id
+        // id much match the div id above in the html
+        var figures = {{figuresJSON | safe}};
+        var ids = {{ids | safe}};
+        for(var i in figures) {
+            Plotly.plot(ids[i],
+                figures[i].data,
+                figures[i].layout || {});
+        }
+    </script>
+</footer>
 </html>
