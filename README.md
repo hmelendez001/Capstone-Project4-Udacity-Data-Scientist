@@ -132,10 +132,10 @@ The web application uses a Flask Session to persist updates made through the web
 | Step | Command | Description |
 | :--- | :--- | :--- |
 | 1 | mkdir web_app | Create a folder to contain all the assets to deploy |
-| 2 | cp -R <root folder path of this project> web_app | Copy all the files in this project to the web_app folder you created in step 1 |
-| 3 | heroku --version | Verify the Heroku installation | 
+| 2 | cp -R app/* web_app | Copy all the files in this project to the web_app folder you created in step 1 |
+| 3 | heroku --version | Verify the Heroku installation, if you get a not found error the you need to install heroku with: npm install -g heroku | 
 | 4 | curl https://cli-assets.heroku.com/install-ubuntu.sh \| sh | Install the necessary Heroku assets using their installation script | 
-| 5 | heroku login -i | Assuming you have a Heroku account already, if not go to heroku.com and set up your account then issue this command to login with your credentials |
+| 5 | heroku login -i | Assuming you have a Heroku account already, if not go to heroku.com and set up your account then issue this command to login with your credentials. If you get a message like you are logged in but it hangs and you get no command prompt on Windows then you need to do this from a Windows CMD prompt |
 | 6 | git init<p/>git config --global user.email "you@example.com"<p/>git config --global user.name "Your Name" | Initialize a git repository with these ONE-TIME commands, if you do not already have one in Heroku |
 | 7 | cd web_app<p/>cp -R app/templates .<p/>cp app/run.py . | You will need to copy the app/ directory contents to the root folder so that Heroku will find it at runtime |
 | 8 | git add .<p/>git status<p/>git commit -m "your message" | Use this chain of command to commit your files to the Heroku git repository |
