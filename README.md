@@ -131,17 +131,17 @@ The web application uses a Flask Session to persist updates made through the web
 # How to Deploy to the Heroku Hosting Platform
 | Step | Command | Description |
 | :--- | :--- | :--- |
-| 1 | mkdir web_app | Create a folder to contain all the assets to deploy at the root level |
-| 2 | cp -R app/* web_app | Recursively copy all the files in folders app/, data/, and files Procfile and requirements to the web_app folder you created in step 1 |
-| 3 | heroku --version | Verify the Heroku installation, if you get a not found error then you need to install heroku with: npm install -g heroku. If you do not have npm then just install Node.js from the LTS https://nodejs.org/en/download/ | 
-| 4 | curl https://cli-assets.heroku.com/install-ubuntu.sh \| sh | Install the necessary Heroku assets using their installation script | 
-| 5 | heroku login -i | Assuming you have a Heroku account already, if not go to heroku.com and set up your account then issue this command to login with your credentials. If you get a message like you are logged in but it hangs and you get no command prompt on Windows then you need to do this from a Windows CMD prompt |
-| 6 | git init<p/>git config --global user.email "you@example.com"<p/>git config --global user.name "Your Name" | Initialize a git repository with these ONE-TIME commands, if you do not already have one in Heroku |
-| 7 | cd web_app<p/>cp -R app/templates .<p/>cp app/run.py . | You will need to copy the app/ directory contents to the root folder so that Heroku will find it at runtime |
-| 8 | git add .<p/>git status<p/>git commit -m "your message" | Use this chain of command to commit your files to the Heroku git repository |
-| 9 | heroku create my-app-name --buildpack heroku/python | Create a uniquely named Heroku app using this command. If you get a message that the app name is already taken, try again with a different app name until you find one that is not taken |
-| 10| git remote -v | Check that heroku added a remote repository with this command |
-| 11 | heroku config:set SLUGIFY_USES_TEXT_UNIDECODE=yes<p/>heroku config:set AIRFLOW_GPL_UNIDECODE=yes<p/>heroku config<p/>git push heroku master | Set any environment variable to pass along with the deployment and push the app to Heroku |
+| 1 | `mkdir web_app` and `cd web_app` then `mkdir app data` | Create a folder to contain all the assets to deploy at the root level. I had to run these from Windows CMD command prompt because I could not login into Heroku successfully otherwise from say a Git Bash command line |
+| 2 | `copy ..\app\* app\` and `copy ..\data\* data\` | Recursively copy all the files in folders app/, data/, and files Procfile, requirements.txt, and runtime.txt to the web_app folder you created in step 1 |
+| 3 | `heroku --version` | Verify the Heroku installation, if you get a not found error then you need to install heroku with: `npm install -g heroku`. If you do not have npm then just install Node.js from the LTS https://nodejs.org/en/download/ | 
+| 4 | `curl https://cli-assets.heroku.com/install-ubuntu.sh \| sh` | Install the necessary Heroku assets using their installation script | 
+| 5 | `heroku login -i` | Assuming you have a Heroku account already, if not go to heroku.com and set up your account then issue this command to login with your credentials. If you get a message like you are logged in but it hangs and you get no command prompt on Windows then you need to do this from a Windows CMD prompt |
+| 6 | `git init`<p/>`git config --global user.email "you@example.com"`<p/>`git config --global user.name "Your Name"` | Initialize a git repository with these ONE-TIME commands, if you do not already have one in Heroku |
+| 7 | `cd web_app`<p/>`cp -R app/templates .`<p/>`cp app/run.py .` | You will need to copy the app/ directory contents to the root folder so that Heroku will find it at runtime |
+| 8 | `git add .`<p/>`git status`<p/>`git commit -m "your message"` | Use this chain of command to commit your files to the Heroku git repository |
+| 9 | `heroku create my-app-name --buildpack heroku/python` | Create a uniquely named Heroku app using this command. If you get a message that the app name is already taken, try again with a different app name until you find one that is not taken. If the app has already been created you have to point to the existing app using `heroku git:remote -a my-app-name` |
+| 10| `git remote -v` | Check that heroku added a remote repository with this command |
+| 11 | `heroku config:set SLUGIFY_USES_TEXT_UNIDECODE=yes`<br/>`heroku config:set AIRFLOW_GPL_UNIDECODE=yes`<br/>`heroku config`<br/>`git push heroku master` | Set any environment variable to pass along with the deployment and push the app to Heroku |
 | 12 | From a web browser go to the link for your as named in step 8 above, something like https://app-name.heroku.com | Confirm your app is running on Heroku |
 
 ### Performance
